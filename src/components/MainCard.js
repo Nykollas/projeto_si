@@ -8,18 +8,18 @@ class MainCard extends Component {
 
     render = () => {
 
-        const { title, children  } = this.props;
+        const { title, children, submitButton  } = this.props;
         return(
             <div className={'main-container'}>
                 <div className={'card-container'}>
                     <div className={"card-title-container"}>
-                            <p className={'card-title-text'}>{"Example"}</p>
+                            <p className={'card-title-text'}>{title}</p>
                     </div>
                     <div className={"inputs-container"}>
                         {children}
                     </div>
                     <div className={'card-button-container'}>
-                        <Button title={"Entrar"}></Button>
+                        {submitButton}
                     </div>
                 </div>
             </div>

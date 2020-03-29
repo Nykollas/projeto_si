@@ -17,7 +17,17 @@
   box-shadow: 1px 1px 1px 1px #908989;
 }
 .default-dark-shadow {
-  box-shadow: 1px 2px 5px 0px #282525;
+  box-shadow: 1px 2px 5px 0px #353232;
+}
+.col-horizontal-centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.col-vertical-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .header {
   display: flex;
@@ -52,8 +62,8 @@
 }
 .card-container {
   box-shadow: 1px 1px 1px 1px #908989;
-  height: 509px;
-  width: 900px;
+  height: 400px;
+  width: 700px;
   border-radius: 12px;
   background: linear-gradient(to bottom, #3988FF, #394DFF);
 }
@@ -72,13 +82,19 @@
   align-items: center;
   justify-content: center;
 }
+.inputs-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
 .submit-button-container {
-  box-shadow: 1px 2px 5px 0px #282525;
+  box-shadow: 1px 2px 5px 0px #353232;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 52px;
-  width: 360px;
+  width: 280px;
   background-color: #394DFF;
   border-radius: 12px;
   border-width: 2px;
@@ -92,4 +108,41 @@
   color: white;
   width: 100%;
   height: 100%;
+}
+.card-input-container {
+  box-shadow: 1px 2px 5px 0px #353232;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 280px;
+  height: 52px;
+  background-color: #FFFFFF;
+  margin-bottom: 18px;
+  border-radius: 12px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.card-input-container input {
+  border: none;
+  border-radius: 12px;
+  height: 44px;
+  width: 264px;
+  font-size: 18px;
+}
+.password-recovery-label {
+  font-size: 16px;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+.password-recovery-label-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 280px;
+}
+.illustration-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
