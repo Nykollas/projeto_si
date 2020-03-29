@@ -1,0 +1,43 @@
+.full-centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.row-vertical-centered {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.row-horizontal-centered {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.default-shadow {
+  box-shadow: 1px 1px 1px 1px #848484;
+}
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-shadow: 1px 1px 1px 1px #848484;
+  background-color: #394DFF;
+  height: 78px;
+  width: 100%;
+}
+.header-icon-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 8px;
+}
+.header-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+.header-title-text {
+  font-size: 36px;
+  color: #FFFFFF;
+}
