@@ -19,8 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build-css": "less-watch-compiler --run-once --main-file=index.less src/less/ src/less/",
-    "watch-css": "npm run build-css && less-watch-compiler --main-file=index.less src/less/ src/less/"
+    "build-css": "less-watch-compiler --run-once --main-file=style.less src/assets/styles/less /src/assets/styles/css/",
+    "watch-css": "npm run build-css && less-watch-compiler --main-file=style.less src/assets/styles/less/ src/assets/styles/css/"
   },
   "eslintConfig": {
     "extends": "react-app"
