@@ -1,0 +1,29 @@
+@import url('./mixins.less');
+
+
+.main-container{
+    .full-centered();
+    margin:32px;
+}
+
+.card-container{
+    .default-shadow();
+    height:@card-height;
+    width:@card-width;
+    border-radius: 12px;
+    background: linear-gradient(to bottom, @light-blue, @solid-blue);
+}
+
+.card-title-container{
+    .row-horizontal-centered();
+
+}
+.card-title-text{
+    color:@white;
+    font-size:@card-title-size;
+    font-weight:bold;
+}
+
+.card-button-container{
+    .full-centered();
+}
