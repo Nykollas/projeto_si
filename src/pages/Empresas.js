@@ -3,6 +3,7 @@ import EmpresaCardEdit from '../components/EmpresaCardEdit';
 import Header from '../components/Header';
 import Hamburguer from '../assets/images/hamburguer';
 import UserData from '../components/UserData';
+import UserDataEdit from '../components/UserDataEdit';
 
 class Empresas extends Component {
     render = () => {
@@ -10,10 +11,10 @@ class Empresas extends Component {
             <>
                 <Header icon={<Hamburguer/>} title={"Empresas"}></Header>
 
-                <UserData name={"Nome"}
+                <UserDataEdit name={"Nome"}
                           email={"Email"}
                           password={"************"}
-                    ></UserData>
+                    ></UserDataEdit>
 
             </>
         )
