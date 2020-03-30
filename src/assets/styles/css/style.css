@@ -129,6 +129,27 @@
   width: 264px;
   font-size: 18px;
 }
+.carousel-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 10vw ;
+  margin-right: 10vw ;
+  overflow: hidden;
+  margin-top: 32px;
+  padding: 8px;
+  height: 40vh;
+}
+.carousel-container .carousel-image-container {
+  height: 100%;
+  margin-right: 16px;
+  box-shadow: 1px 1px 1px 1px gray;
+  border-radius: 12px;
+}
+.carousel-container .carousel-image-container img {
+  height: 100%;
+  border-radius: 12px;
+}
 .password-recovery-label {
   font-size: 16px;
   color: #FFFFFF;

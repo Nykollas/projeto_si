@@ -5,9 +5,7 @@ class MainCard extends Component {
     constructor(props){
         super(props)
     }
-
     render = () => {
-
         const { title, children, submitButton  } = this.props;
         return(
             <div className={'main-container'}>
