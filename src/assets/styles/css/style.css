@@ -13,6 +13,26 @@
   flex-direction: row;
   justify-content: center;
 }
+.row-horizontal-start {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.row-vertical-start {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.row-horizontal-end {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.row-vertical-end {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
 .default-shadow {
   box-shadow: 1px 1px 1px 1px #908989;
 }
@@ -29,13 +49,23 @@
   flex-direction: column;
   align-items: center;
 }
+.gray-border {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #dad8d8;
+}
+.blue-text {
+  font-size: 18px;
+  color: #3988FF;
+  font-weight: bold;
+}
 .header {
   display: flex;
   flex-direction: row;
   align-items: center;
   box-shadow: 1px 1px 1px 1px #908989;
   background-color: #394DFF;
-  height: 78px;
+  height: 64px;
   width: 100%;
 }
 .header-icon-container {
@@ -51,8 +81,10 @@
   width: 100%;
 }
 .header-title-text {
-  font-size: 36px;
+  font-size: 24px;
   color: #FFFFFF;
+  font-weight: bold;
+  padding-right: 32px;
 }
 .main-container {
   display: flex;
@@ -74,7 +106,7 @@
 }
 .card-title-text {
   color: #FFFFFF;
-  font-size: 24px;
+  font-size: 16px;
   font-weight: bold;
 }
 .card-button-container {
@@ -93,7 +125,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 52px;
+  height: 42.66666667px;
   width: 280px;
   background-color: #394DFF;
   border-radius: 12px;
@@ -115,7 +147,7 @@
   align-items: center;
   justify-content: center;
   width: 280px;
-  height: 52px;
+  height: 42.66666667px;
   background-color: #FFFFFF;
   margin-bottom: 18px;
   border-radius: 12px;
@@ -125,7 +157,7 @@
 .card-input-container input {
   border: none;
   border-radius: 12px;
-  height: 44px;
+  height: 34.66666667px;
   width: 264px;
   font-size: 18px;
 }
@@ -133,12 +165,13 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-left: 10vw ;
-  margin-right: 10vw ;
+  margin-left: 20vw;
+  margin-right: 20vw;
   overflow: hidden;
   margin-top: 32px;
-  padding: 8px;
-  height: 40vh;
+  padding-bottom: 8px;
+  height: 45vh;
+  width: 60vw;
 }
 .carousel-container .carousel-image-container {
   height: 100%;
@@ -149,6 +182,42 @@
 .carousel-container .carousel-image-container img {
   height: 100%;
   border-radius: 12px;
+}
+.table {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #dad8d8;
+  width: 300px;
+  padding: 8px;
+  border-radius: 12px;
+  margin-right: 130px;
+}
+.table-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  background-color: #eaeaea;
+  border-radius: 12px;
+  padding-left: 6px;
+  padding-right: 6px;
+  flex: 0;
+}
+.table-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+.table-column {
+  width: 200px;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+.table-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .password-recovery-label {
   font-size: 16px;
@@ -166,4 +235,11 @@
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
+}
+.dashboard-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  margin-left: 20vw;
+  margin-bottom: 32px;
 }

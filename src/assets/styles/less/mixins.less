@@ -17,6 +17,26 @@
     flex-direction: row;
     justify-content: center;    
 }
+.row-horizontal-start{
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.row-vertical-start{
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.row-horizontal-end{
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.row-vertical-end{
+    display:flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
 
 .default-shadow{
     box-shadow: 1px 1px 1px 1px darken(@light-gray,30%);
@@ -34,4 +54,15 @@
     display:flex;
     flex-direction: column;
     align-items: center;    
+}
+.gray-border{
+    border-style: solid;
+    border-width: 1px;
+    border-color:@light-gray
+}
+
+.blue-text{
+    font-size:18px;
+    color:@light-blue;
+    font-weight: bold;
 }

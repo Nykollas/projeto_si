@@ -29,9 +29,9 @@ class Carousel extends Component {
 
         if(holding ){
             if(event.movementX > 0)
-                this.carouselRef.scroll({left:left - event.movementX});
+                this.carouselRef.scroll({ left:left - event.movementX });
             else    
-                this.carouselRef.scroll({left:left - event.movementX});
+                this.carouselRef.scroll({ left:left - event.movementX });
         }
     }
 

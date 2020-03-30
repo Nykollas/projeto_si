@@ -8,8 +8,10 @@ class Login  extends Component {
     render = () => {
         return(
             <> 
-            <Header icon={<Hamburguer/>} title={"Recuperar Senha"}></Header>
-                <Card  submitButton={<Button title={"Enviar"}></Button>} title={"Login"} >
+                <Header icon={<Hamburguer/>} 
+                        title={"Recuperar Senha"}>
+                </Header>
+                <Card  submitButton={<Button title={"Enviar"}></Button>} title={"Login"}>
                     <Input placeholder= {'E-mail'}></Input>
                 </Card>
                 <div className={"illustration-container"}>
