@@ -24,7 +24,7 @@ class Table extends Component {
                     </TableRow> 
                     {data.map((value) => {
                         return <TableRow name={value.name}
-                                  value={value.value}>
+                                         value={value.value}>
                                 </TableRow>
                     })}
                 </div>

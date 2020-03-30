@@ -41,6 +41,7 @@
 .default-shadow{
     box-shadow: 1px 1px 1px 1px darken(@light-gray,30%);
 }
+
 .default-dark-shadow{
     box-shadow: 1px 2px 5px 0px darken(@light-gray,65%);
 }
@@ -55,6 +56,16 @@
     flex-direction: column;
     align-items: center;    
 }
+.col-horizontal-start{
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;    
+}
+.col-vertical-start{
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;    
+}
 .gray-border{
     border-style: solid;
     border-width: 1px;
@@ -66,3 +77,16 @@
     color:@light-blue;
     font-weight: bold;
 }
+
+.gray-text{
+    font-size:18px;
+    color:@strong-gray;
+    font-weight: bold;
+}
+
+.blue-border{
+    border-style: solid;
+    border-width: 2px;
+    border-color:@light-blue
+}
+
