@@ -1,0 +1,33 @@
+@import url('./mixins.less');
+@import url('./animations.less');
+
+.drawer-container{
+
+    .default-shadow();
+
+    width:300px;
+    height:100%;
+    position:fixed;
+    background-color: white;
+    z-index: 2;
+    top:0px;
+    left:-301px;
+    display: flex;
+    flex-direction: column;
+}
+.open-drawer{
+    .keyframes(open-drawer, @open-drawer-animation);
+    .animation(open-drawer 1s linear  0s forwards);
+}
+
+.close-drawer{
+    .keyframes(close-drawer, @close-drawer-animation);
+    .animation(close-drawer 1s linear 0s backwards);
+}
+
+
+
+
+
+
+
