@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import Button from '../components/Button';
+import { connect } from 'react-redux';
 
 class MainCard extends Component {
-    constructor(props){
-        super(props)
-    }
+
     render = () => {
-        const { title, children, submitButton  } = this.props;
+        const { title, children, submitButton, login_label  } = this.props;
         return(
             <div className={'main-container'}>
                 <div className={'card-container'}>
@@ -19,10 +17,19 @@ class MainCard extends Component {
                     <div className={'card-button-container'}>
                         {submitButton}
                     </div>
+                    <p>
+                        {login_label}
+                    </p>
                 </div>
             </div>
         )
     }
 } 
 
-export default MainCard;
+//Conectando estados com as props detes componente
+
+const mapStateToProps = state => ({
+    login_label:state.login_label
+})
+
+export default connect(mapStateToProps)(MainCard);

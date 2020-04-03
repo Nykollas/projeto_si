@@ -4,6 +4,8 @@ import Hamburguer from '../assets/images/hamburguer';
 import Card from '../components/MainCard';
 import Input from '../components/Input';
 import Illustration from '../assets/images/illustration';
+import Button  from '../components/Button';
+
 class Login  extends Component {
     render = () => {
         return(
@@ -11,6 +13,7 @@ class Login  extends Component {
             <Header icon={<Hamburguer/>} title={"Recuperar Senha"}></Header>
                 <Card  submitButton={<Button title={"Enviar"}></Button>} title={"Login"} >
                     <Input placeholder= {'Código'}></Input>
+                    
                 </Card>
                 <div className={"illustration-container"}>
                     <Illustration></Illustration>

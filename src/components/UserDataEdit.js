@@ -6,9 +6,6 @@ import EmpresaInput from '../components/EmpresaInput';
 
 class UserData extends Component {
 
-    constructor(props){
-        super(props);
-    }
 
     render  = () => {
         const { name, email, password } = this.props;

@@ -1,13 +1,48 @@
 import React from 'react';
-import Header from './components/Header';
-import Hamburguer from './assets/images/hamburguer';
+import { 
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom';
 
-import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
 import Empresas from './pages/Empresas';
+import Login from './pages/Login';
+import NewPassword from './pages/NewPassword';
+import PasswordRecovery from './pages/PasswordRecovery';
+import PasswordRecoveryCode from './pages/PasswordRecoveryCode'
+
+
+
+
+
 
 function App() {
   return (
-    <Empresas></Empresas>
+    <Router>
+      <Switch>
+        <Route path="/login">
+          <Login></Login>
+        </Route>
+        <Route path="/register">
+        </Route>
+        <Route path="/empresas">
+          <Empresas></Empresas>
+        </Route>
+        <Route path="/home">
+            <Dashboard></Dashboard>
+        </Route>
+        <Route path="/forgot_password">
+            <PasswordRecovery></PasswordRecovery>
+        </Route>
+        <Route path="/code_password">
+          <PasswordRecoveryCode></PasswordRecoveryCode>
+        </Route>
+        <Route path="/recovery_password">
+            <NewPassword></NewPassword>
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 

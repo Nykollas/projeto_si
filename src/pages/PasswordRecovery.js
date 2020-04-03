@@ -4,6 +4,8 @@ import Hamburguer from '../assets/images/hamburguer';
 import Card from '../components/MainCard';
 import Input from '../components/Input';
 import Illustration from '../assets/images/illustration';
+import Button  from '../components/Button';
+
 class Login  extends Component {
     render = () => {
         return(

@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import Hamburguer from '../assets/images/hamburguer';
 import Card from '../components/MainCard';
 import Input from '../components/Input';
+import Button from '../components/Input';
 import Illustration from '../assets/images/illustration';
 class Login  extends Component {
     render = () => {

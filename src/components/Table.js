@@ -3,9 +3,6 @@ import TableRow from '../components/TableRow';
 
 class Table extends Component {
 
-    constructor(props){
-        super(props);
-    }
 
     render = () => {
 

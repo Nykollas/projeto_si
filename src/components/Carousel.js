@@ -54,7 +54,7 @@ class Carousel extends Component {
                  ref = {comp => this.carouselRef = comp}className={"carousel-container"}>
                 {data.map((value) => {
                     return <div className={"carousel-image-container"}>
-                        <img className={"carousel-image"} src={value}></img>
+                        <img alt={"carousel"} className={"carousel-image"} src={value}></img>
                     </div>
                 })}
             </div>

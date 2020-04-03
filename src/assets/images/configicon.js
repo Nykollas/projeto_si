@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 
 class ConfigIcon extends Component {
-
-    constructor(props){
-        super(props);
-    }
-
     render = () => {
         const {height, width } = this.props;
         return (

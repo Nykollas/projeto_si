@@ -119,6 +119,13 @@
   border-radius: 12px;
   background: linear-gradient(to bottom, #3988FF, #394DFF);
 }
+.card-container p {
+  font-size: 18px;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
 .card-title-container {
   display: flex;
   flex-direction: row;

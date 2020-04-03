@@ -8,9 +8,6 @@ import Illustration from '../assets/images/illustration';
 
 class Empresas extends Component {
 
-    constructor(props){
-        super(props);
-    }
 
     render = () => {
 
@@ -24,21 +21,17 @@ class Empresas extends Component {
         ];
 
         const data_two = [
-
             { name:'Mecânica', value:'100'},
             { name:'Oficina', value:'70'},
             { name:'Barbearia', value:'20'},
             { name:'Salão', value:'10'}
-
         ];
 
         const data_three = [
-
             { name:'Mecânica', value:'100'},
             { name:'Oficina', value:'70'},
             { name:'Barbearia', value:'20'},
             { name:'Salão', value:'10'}
-
         ];
 
         return(

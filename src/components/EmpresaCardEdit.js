@@ -12,7 +12,7 @@ class EmpresaCard extends Component {
             <div className={'empresa-card-container'}>
                 <div className={'empresa-col'}>
                     <div className={'empresa-row'}>
-                        <img src={'https://www.w3schools.com/w3css/img_lights.jpg'}></img>
+                        <img alt={"Empresa"} src={'https://www.w3schools.com/w3css/img_lights.jpg'}></img>
                     </div>
                     <div className={'empresa-row'}>
                         <Hashtags></Hashtags>
