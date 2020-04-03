@@ -4,7 +4,7 @@ import Hamburguer from '../assets/images/hamburguer';
 import Carousel from '../components/Carousel';
 import Table from '../components/Table';
 import Illustration from '../assets/images/illustration';
-
+import Drawer from '../components/Drawer';
 
 class Empresas extends Component {
 
@@ -37,6 +37,7 @@ class Empresas extends Component {
         return(
             <>
                 <Header icon={<Hamburguer/>} title={"Dashboard"}></Header>
+                <Drawer></Drawer>
                 <div style={{marginBottom:64}}>
                     <Carousel></Carousel>
                 </div>

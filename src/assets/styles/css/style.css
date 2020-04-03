@@ -382,6 +382,76 @@
   font-weight: bold;
   font-size: 20px;
 }
+.drawer-container {
+  box-shadow: 1px 1px 1px 1px #908989;
+  width: 300px;
+  height: 100%;
+  position: fixed;
+  background-color: white;
+  z-index: 2;
+  top: 0px;
+  left: -301px;
+  display: flex;
+  flex-direction: column;
+}
+.open-drawer {
+  -webkit-animation: open-drawer 1s linear 0s forwards;
+  -moz-animation: open-drawer 1s linear 0s forwards;
+  animation: open-drawer 1s linear 0s forwards;
+}
+@-moz-keyframes open-drawer {
+  0% {
+    left: -301px;
+  }
+  100% {
+    left: 0px;
+  }
+}
+@-webkit-keyframes open-drawer {
+  0% {
+    left: -301px;
+  }
+  100% {
+    left: 0px;
+  }
+}
+@keyframes open-drawer {
+  0% {
+    left: -301px;
+  }
+  100% {
+    left: 0px;
+  }
+}
+.close-drawer {
+  -webkit-animation: close-drawer 1s linear 0s backwards;
+  -moz-animation: close-drawer 1s linear 0s backwards;
+  animation: close-drawer 1s linear 0s backwards;
+}
+@-moz-keyframes close-drawer {
+  0% {
+    left: 0px;
+  }
+  100% {
+    left: -301px;
+  }
+}
+@-webkit-keyframes close-drawer {
+  0% {
+    left: 0px;
+  }
+  100% {
+    left: -301px;
+  }
+}
+@keyframes close-drawer {
+  0% {
+    left: 0px;
+  }
+  100% {
+    left: -301px;
+  }
+}
 .password-recovery-label {
   font-size: 16px;
   color: #FFFFFF;

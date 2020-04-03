@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../redux/actions';
 
 class Header extends Component {
+
+    openDrawer = () => {
+        const {  openDrawer  } = this.props;
+        openDrawer(true);
+    }
+
     render = () => {
         const { icon, title } = this.props;
-        return(<div className={'header'}>
-                    <div className={"header-icon-container"}>
+        return(<div  className={'header'}>
+                    <div onClick ={this.openDrawer} className={"header-icon-container"}>
                         {icon}
                     </div>  
                     <div className={"header-title"}>
@@ -16,4 +24,10 @@ class Header extends Component {
     }
 }
 
-export default Header;
+
+const mapDispatchToProps = actions;
+const mapStateToProps = (state) => ({
+    drawer_open:state.drawer_open
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
