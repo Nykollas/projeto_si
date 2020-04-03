@@ -5,8 +5,11 @@ import Carousel from '../components/Carousel';
 import Table from '../components/Table';
 import Illustration from '../assets/images/illustration';
 import Drawer from '../components/Drawer';
+import { connect} from 'react-redux';
 
-class Empresas extends Component {
+import  * as actions from '../redux/actions'
+
+class Dashboard extends Component {
 
 
     render = () => {
@@ -67,4 +70,10 @@ class Empresas extends Component {
     }
 }
 
-export default Empresas;
+const mapStateToProps = state => ({
+    state:state
+})
+
+const mapDispatchToProps  = actions;
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

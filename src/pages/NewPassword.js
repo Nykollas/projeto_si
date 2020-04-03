@@ -5,11 +5,15 @@ import Card from '../components/MainCard';
 import Input from '../components/Input';
 import Button from '../components/Input';
 import Illustration from '../assets/images/illustration';
-class Login  extends Component {
+import { connect} from 'react-redux';
+import Drawer from '../components/Drawer';
+import  * as actions from '../redux/actions'
+class NewPassword  extends Component {
     render = () => {
         return(
             <> 
             <Header icon={<Hamburguer/>} title={"Recuperar Senha"}></Header>
+            <Drawer></Drawer>
                 <Card submitButton={<Button title={"Redefinir"}></Button>} title={"Login"} >
                     <Input placeholder= {'Senha Atual'}></Input>
                     <Input placeholder= {'Nova Senha'}></Input>
@@ -22,4 +26,11 @@ class Login  extends Component {
     }
 }
 
-export default Login;
+const mapStateToProps = state => ({
+    state:state
+})
+
+const mapDispatchToProps  = actions;
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewPassword);
+

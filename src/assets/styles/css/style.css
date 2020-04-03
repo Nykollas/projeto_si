@@ -394,6 +394,21 @@
   display: flex;
   flex-direction: column;
 }
+.drawer-header-container {
+  padding: 40px;
+}
+.drawer-option {
+  background-color: #e9e9e9;
+}
+.drawer-option p {
+  font-size: 18px;
+  font-weight: bold;
+  color: #3988FF;
+  margin: 0;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 24px;
+}
 .open-drawer {
   -webkit-animation: open-drawer 1s linear 0s forwards;
   -moz-animation: open-drawer 1s linear 0s forwards;

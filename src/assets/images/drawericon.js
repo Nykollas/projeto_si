@@ -5,7 +5,13 @@ class Illustration extends Component {
 
 
     render = () => {
-        return (<svg width="262" height="191" viewBox="0 0 262 191" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+        const {width, height } = this.props;
+        
+        const viewBox = "0 0 "+width+" "+height
+        console.log(viewBox);
+
+        return (<svg width={width} height={height} viewBox={"0 0 300 200"} fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0)">
                 <path d="M52.2704 171.732C57.0303 178.239 66.9109 178.924 66.9109 178.924C66.9109 178.924 69.0742 169.059 64.3143 162.552C59.5544 156.045 49.6738 155.36 49.6738 155.36C49.6738 155.36 47.5105 165.225 52.2704 171.732Z" fill="#E6E6E6" />
                 <path d="M76.5182 174.178C73.3773 178.472 66.8573 178.924 66.8573 178.924C66.8573 178.924 65.4298 172.414 68.5708 168.12C71.7117 163.827 78.2316 163.375 78.2316 163.375C78.2316 163.375 79.6591 169.884 76.5182 174.178Z" fill="#E6E6E6" />
@@ -33,7 +39,7 @@ class Illustration extends Component {
             </g>
             <defs>
                 <clipPath id="clip0">
-                    <rect y="0.092926" width="262" height="190.12" fill="white" />
+                    <rect y="0.092926" width={300} height={200} fill="white" />
                 </clipPath>
             </defs>
         </svg>)

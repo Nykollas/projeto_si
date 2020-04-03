@@ -45,12 +45,12 @@ class Drawer extends Component {
                   ref ={comp => {return this.drawerRef = comp}}
                   className={ 'drawer-container '+ this.isDrawerOpen()  }>
                 <div className="drawer-header-container">
-                        <Illustration></Illustration>
+                        <Illustration height={200} width={200}></Illustration>
                 </div>
                 <div className={"drawer-body-container"}>
-                    <div className={"drawerOption"}> Início </div>
-                    <div className={"drawerOption"}> Login </div>
-                    <div className={"drawerOption"}> Cadastro </div>
+                    <div className={"drawer-option"}><p> Início</p> </div>
+                    <div className={"drawer-option"}><p> Início</p></div>
+                    <div className={"drawer-option"}><p> Início</p></div>
                 </div>
             </div>
         );
