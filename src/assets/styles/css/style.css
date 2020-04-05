@@ -59,6 +59,16 @@
   flex-direction: column;
   align-items: flex-start;
 }
+.col-horizontal-end {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.col-vertical-end {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
 .gray-border {
   border-style: solid;
   border-width: 1px;
@@ -266,7 +276,7 @@
 .empresa-col {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  align-items: flex-start;
   width: 100%;
   min-width: 0px;
 }
@@ -299,8 +309,9 @@
   border-width: 1px;
   border-color: #dad8d8;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  flex: 1;
   height: 42.66666667px;
   background-color: #FFFFFF;
   margin-bottom: 18px;
@@ -314,7 +325,6 @@
   border: none;
   border-radius: 12px;
   height: 34.66666667px;
-  width: 264px;
   font-size: 18px;
   min-width: 0px;
 }
@@ -467,6 +477,31 @@
     left: -301px;
   }
 }
+.search-input-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 2px solid #3988FF;
+  border-radius: 12px;
+  justify-content: space-between;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  box-shadow: 1px 2px 5px 0px #353232;
+}
+.search-input-container input {
+  border: none;
+  margin-right: 10vw;
+}
+.search-container {
+  display: flex;
+  flex-direction: row;
+  padding-left: 20vw;
+  padding-right: 20vw;
+  justify-content: space-between;
+  margin-top: 32px;
+}
 .password-recovery-label {
   font-size: 16px;
   color: #FFFFFF;
@@ -503,6 +538,6 @@
   font-size: 18px;
   color: #3988FF;
   font-weight: bold;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
   margin-top: 0px;
 }

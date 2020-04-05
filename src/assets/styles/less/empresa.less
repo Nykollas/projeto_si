@@ -15,7 +15,7 @@
 }
 
 .empresa-col{
-    .col-horizontal-start();
+    .col-vertical-start();
     width: 100%;
     img{
         height:300px;
@@ -42,7 +42,8 @@
 
 .empresa-input-container{
         .gray-border();
-        .full-centered();
+        .col-horizontal-centered();
+        flex:1;
         height:@input-height;
         background-color: @white;
         margin-bottom:18px;
@@ -51,11 +52,10 @@
         padding-left:@input-padding-horizontal;
         padding-right:@input-padding-horizontal;
         input{
-            border:none;
-            border-radius:12px;
-            height: @input-height - (@input-padding-horizontal / 2) ;
-            width:@input-width - @input-padding-horizontal;
-            font-size:18px;
+            border: none;
+            border-radius: 12px;
+            height: @input-height - ( @input-padding-horizontal / 2 ) ;
+            font-size: 18px;
             min-width: 0px;
         }
         min-width: 0px;

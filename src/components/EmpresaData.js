@@ -2,26 +2,37 @@ import React, { Component } from 'react';
 
 
 class EmpresaData extends Component {
+
+    constructor(props) {
+        super(props);
+    }
+
     render = () => {
-        return(
-            <div className={'empresa-input-container'}>
+
+        const { data } = this.props
+        return (
+            <div className={'empresa-text-container'}>
                 <div className={'empresa-data-text-container'}>
-                    <p>teste</p>
+                    <p>{data.name ? data.name : "N/A"}</p>
                 </div>
                 <div className={'empresa-data-text-container'}>
-                    <p>teste</p>
+                    <p>{data.tel ? data.tel : "N/A"}</p>
                 </div>
                 <div className={'empresa-data-text-container'}>
-                    <p>teste</p>
+                    <p>{data.enterprise_email ? data.enterprise_email : "N/A"}</p>
                 </div>
                 <div className={'empresa-data-text-container'}>
-                    <p>teste</p>
+                    <p>{data.street ? data.enterprise_email : "N/A"}</p>
                 </div>
                 <div className={'empresa-data-text-container'}>
-                    <p>teste</p>
+                    <p>{data.place ? data.enterprise_email : "N/A"}</p>
                 </div>
-                <div className={'empresa-data-text-container'}>
-                    <p>teste</p>
+                <div className={'empresa-data-text-container'}
+                    style={{ flexDirection: 'row', display: 'flex' }}>
+                    <p>{data.city ? data.city : "N/A"}</p>
+                    <p>,</p>
+                    <div style={{width:12}}></div>
+                    <p>{data.uf ? data.city : "N/A"}</p>
                 </div>
             </div>
         );

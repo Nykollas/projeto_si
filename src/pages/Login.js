@@ -6,7 +6,6 @@ import Input from '../components/Input';
 import Illustration from '../assets/images/illustration';
 import Button from '../components/Button';
 import { connect} from 'react-redux';
-import Drawer from '../components/Drawer';
 import  * as actions from '../redux/actions'
 
 class Login  extends Component {
@@ -17,7 +16,6 @@ class Login  extends Component {
         return(
             <> 
                 <Header icon = { <Hamburguer/> } title = { "Login" }></Header>
-                <Drawer></Drawer>
                 <Card submitButton = { <Button buttonAction={setLoginLabel} title = {"Entrar" }></Button> } title = { "Login" }>
                     <Input inputAction = { setEmail } placeholder = { 'E-mail' }></Input>
                     <Input inputAction = { setPassword } placeholder = { 'Senha' }></Input>

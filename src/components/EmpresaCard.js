@@ -3,9 +3,27 @@ import EmpresaData from '../components/EmpresaData';
 import Hashtags from '../components/Hashtags';
 
 import EditButton from '../assets/images/editbutton';
+import PlusIcon from '../assets/images/plus';
 
-class EmpresaCardEdit extends Component {
+class EmpresaCard extends Component {
+
+    constructor(props){
+        super(props);
+    }
+
+    onClick = () => {
+        const { parentComponent } = this.props;
+       
+        parentComponent.setState((previousState) => {
+            return {edit:!previousState.edit}
+        });
+        
+    }
+
     render = () => {
+
+        const { data } = this.props;
+
         return (
             <div className={'empresa-card-container'}>
                 <div className={'empresa-col'}>
@@ -18,12 +36,13 @@ class EmpresaCardEdit extends Component {
                 </div>
                 <div className={'empresa-col'}>
                     <div className={'empresa-row'}>
+                        <EmpresaData data={data}></EmpresaData>
                     </div>
                     <div className={'empresa-row'}>
                         <div className={'empresa-category-container'}>
                             <p>Categoria</p>
                         </div>
-                        <EditButton></EditButton>
+                        <EditButton onClick={ this.onClick } height={ 150 } widht={ 150 }></EditButton>
                     </div>
                 </div>
             </div>
@@ -31,4 +50,4 @@ class EmpresaCardEdit extends Component {
     }
 }
 
-export default EmpresaCardEdit;
+export default EmpresaCard;

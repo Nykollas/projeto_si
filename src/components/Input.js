@@ -12,7 +12,7 @@ class Input extends Component {
         const { placeholder }  = this.props;
         return(
             <div className={"card-input-container"}>
-                <input onChange={ this.handleInputChange } type={ "text" } placeholder={ placeholder }></input>
+                <input onChange = { this.handleInputChange } type = { "text" } placeholder = { placeholder }></input>
             </div>
         )
     }

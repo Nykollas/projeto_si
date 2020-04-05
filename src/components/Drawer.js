@@ -3,6 +3,8 @@ import Illustration from '../assets/images/drawericon';
 import { connect } from 'react-redux';
 import * as actions from '../redux/actions';
 
+import DrawerOption from './DrawerOption';
+
 class Drawer extends Component {
 
     constructor(props){
@@ -26,6 +28,7 @@ class Drawer extends Component {
             }
         }
     }
+    
 
     isDrawerOpen =  () => {
         const {drawer_open }  = this.props;
@@ -48,9 +51,11 @@ class Drawer extends Component {
                         <Illustration height={200} width={200}></Illustration>
                 </div>
                 <div className={"drawer-body-container"}>
-                    <div className={"drawer-option"}><p> Início</p> </div>
-                    <div className={"drawer-option"}><p> Início</p></div>
-                    <div className={"drawer-option"}><p> Início</p></div>
+                    <DrawerOption navigateTo="/home" label={ "Home" }></DrawerOption>
+                    <DrawerOption navigateTo="/empresas" label={ "Empresas" }></DrawerOption>
+                    <DrawerOption navigateTo="/user" label={ "Meus dados" }></DrawerOption>
+                    <DrawerOption navigateTo="/login" label={ "Sair" }></DrawerOption>
+                    
                 </div>
             </div>
         );

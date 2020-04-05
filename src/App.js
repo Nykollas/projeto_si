@@ -11,6 +11,7 @@ import Login from './pages/Login';
 import NewPassword from './pages/NewPassword';
 import PasswordRecovery from './pages/PasswordRecovery';
 import PasswordRecoveryCode from './pages/PasswordRecoveryCode'
+import User from './pages/User';
 
 
 
@@ -40,6 +41,9 @@ function App() {
         </Route>
         <Route path="/recovery_password">
             <NewPassword></NewPassword>
+        </Route>
+        <Route path="/user">
+            <User></User>
         </Route>
       </Switch>
     </Router>

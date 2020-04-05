@@ -3,10 +3,13 @@ import EmpresaForm from './EmpresaForm';
 import Hashtags from './Hashtags';
 
 import EditButton from '../assets/images/editsave';
+import CloseIcon from '../assets/images/closeicon';
 
-import TrashIcon from '../assets/images/trash';
+import * as actions from '../redux/actions';
 
-class EmpresaCardEdit extends Component {
+import { connect } from 'react-redux';
+
+class EmpresaCardAdd extends Component {
 
     constructor(props){
         super(props);
@@ -21,10 +24,15 @@ class EmpresaCardEdit extends Component {
         
     }
 
+    cancel = () => {
+        const {removeEmpresa, setAdd } = this.props;
+        setAdd(false);
+        removeEmpresa();
+    }
 
-    render = () => {
+    render = () => {        
 
-        const { data } = this.props;
+    
 
         return (
             <div className={'empresa-card-container'}>
@@ -38,8 +46,8 @@ class EmpresaCardEdit extends Component {
                 </div>
                 <div className={'empresa-col'}>
                     <div className={'empresa-row'}>
-                        <EmpresaForm data={data}></EmpresaForm>
-                        <TrashIcon size={120}></TrashIcon>
+                        <EmpresaForm></EmpresaForm>
+                        <CloseIcon onClick={this.cancel} size={120}></CloseIcon>
                     </div>
                     <div className={'empresa-row'}>
                         <div className={'empresa-category-container'}>
@@ -53,4 +61,12 @@ class EmpresaCardEdit extends Component {
     }
 }
 
-export default EmpresaCardEdit;
+const mapDispatchToProps = actions;
+
+
+const mapStateToProps = (state) => {
+    return { state:state}
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(EmpresaCardAdd);
