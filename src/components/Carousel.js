@@ -35,9 +35,7 @@ class Carousel extends Component {
         }
     }
 
-    componentDidMount = (val) => {
-        console.log(this.carouselRef);
-    }
+
 
     render = () => {
         const data = [

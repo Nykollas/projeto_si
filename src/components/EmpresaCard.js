@@ -5,6 +5,10 @@ import Hashtags from '../components/Hashtags';
 import EditButton from '../assets/images/editbutton';
 import PlusIcon from '../assets/images/plus';
 
+import * as actions from '../redux/actions';
+
+import { connect } from 'react-redux';
+
 class EmpresaCard extends Component {
 
     constructor(props){
@@ -12,13 +16,15 @@ class EmpresaCard extends Component {
     }
 
     onClick = () => {
-        const { parentComponent } = this.props;
-       
-        parentComponent.setState((previousState) => {
-            return {edit:!previousState.edit}
-        });
+        const { setUpdate, index } = this.props;
+
+        
+
+       setUpdate(true, index);
         
     }
+
+
 
     render = () => {
 
@@ -49,5 +55,9 @@ class EmpresaCard extends Component {
         );
     }
 }
+const mapDispatchToProps = actions;
 
-export default EmpresaCard;
+const mapStateToProps= (state) => ({empresas:state.empresas});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(EmpresaCard);

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import EmpresaForm from './EmpresaForm';
 import Hashtags from './Hashtags';
 
-import EditButton from '../assets/images/editsave';
+import SaveButton from '../assets/images/editsave';
 import CloseIcon from '../assets/images/closeicon';
 
 import * as actions from '../redux/actions';
@@ -12,27 +12,59 @@ import { connect } from 'react-redux';
 class EmpresaCardAdd extends Component {
 
     constructor(props){
+
         super(props);
     }
 
+
+  
+
+    validateData = (data) => {
+
+        return true;
+        
+    }
+
     onClick = () => {
-        const { parentComponent } = this.props;
-        
-        parentComponent.setState((previousState) => {
-            return {edit:!previousState.edit}
-        });
-        
+
+        const { add_data, setAdd, empresasRef, removeEmpresa } = this.props;
+        const isValid = this.validateData(add_data);
+        const requestConfig = {
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify(add_data),
+        }
+        if(isValid){
+            fetch("http://localhost:9000/empresas/create", requestConfig).then( res => {
+                res.json().then(response => {
+                    empresasRef.getData();
+                }).catch(err => {
+
+                });
+            }).then(() => {
+
+                setAdd(false);
+                
+            }).catch(err => {
+                
+            })
+        }
     }
 
     cancel = () => {
+
         const {removeEmpresa, setAdd } = this.props;
+
         setAdd(false);
+
         removeEmpresa();
+
     }
 
-    render = () => {        
 
-    
+    render = () => {        
 
         return (
             <div className={'empresa-card-container'}>
@@ -46,14 +78,14 @@ class EmpresaCardAdd extends Component {
                 </div>
                 <div className={'empresa-col'}>
                     <div className={'empresa-row'}>
-                        <EmpresaForm></EmpresaForm>
+                        <EmpresaForm ref={comp => {this.formRef = comp;}}></EmpresaForm>
                         <CloseIcon onClick={this.cancel} size={120}></CloseIcon>
                     </div>
                     <div className={'empresa-row'}>
                         <div className={'empresa-category-container'}>
                             <p>Categoria</p>
                         </div>
-                        <EditButton  onClick={ this.onClick } height={140} width={150 }></EditButton>
+                        <SaveButton  onClick={ this.onClick } height={140} width={150 }></SaveButton>
                     </div>
                 </div>
             </div>
@@ -65,7 +97,7 @@ const mapDispatchToProps = actions;
 
 
 const mapStateToProps = (state) => {
-    return { state:state}
+    return { add_data:state.add_data}
 }
 
 

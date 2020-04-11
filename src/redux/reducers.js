@@ -3,35 +3,54 @@ import { SET_PASSWORD,
          SET_LOGIN_LABEL,
          OPEN_DRAWER,
          IS_INSIDE_DRAWER,
-         SET_PHONE,
-         SET_ENTERPRISE_EMAIL,
-         SET_STREET,
-         SET_PLACE,
-         SET_CITY,
-         SET_UF,
-         SET_CATEGORY,
          SET_ADD,
          SET_ID,
+         SET_ADD_DATA,
+         SET_UPDATE_DATA,
          ADD_EMPRESA,
-         DEL_EMPRESA
+         DEL_EMPRESA,
+         SET_LAST_EMPRESA,
+         UPDATE_EMPRESA,
+         SET_UPDATE,
+         CLEAN_EMPRESAS
      } from './actions';
 
 const initialState = {
+
     id:"",
     password:"",
     email:"",
     login_label:"",
     drawer_open:undefined,
     is_inside_drawer:"",
-    phone:"",
-    enterprise_email:"",
-    street:"",
     adding:false,
-    place:"",
-    city:"",
-    uf:"",
-    category:"",
-    empresas:new Array()
+    editing:false,
+    empresas:new Array(),
+
+    editIndex:0,
+
+    add_data:{
+        _id:"",
+        name:"",
+        phone:"",
+        email:"",
+        street:"",
+        place:"",
+        city:"",
+        uf:"",
+    },
+
+    update_data:{
+        _id:"",
+        name:"",
+        phone:"",
+        email:"",
+        street:"",
+        place:"",
+        city:"",
+        uf:"",
+    },
+
 }
 
 const reducer = (state=initialState, action) => {
@@ -56,47 +75,54 @@ const reducer = (state=initialState, action) => {
             return Object.assign({}, state, {
                 is_inside_drawer:action.is_inside_drawer
             });
-        //To split on two reducers
-        case SET_PHONE:
-            return Object.assign({}, state, {
-                phone:action.phone
-            });
-        case SET_ENTERPRISE_EMAIL:
-            return Object.assign({}, state, {
-                enterprise_email:action.enterprise_email
-            });
-        case SET_STREET:
-            return Object.assign({}, state, {
-                street:action.street
-            });
-        case SET_PLACE:
-            return Object.assign({}, state, {
-               place:action.place
-            });
-        case SET_CITY:
-            return Object.assign({}, state, {
-                city:action.city
-            });
-        case SET_UF:
-            return Object.assign({}, state, {
-                uf:action.uf
-            });
-        case SET_CATEGORY:
-            return Object.assign({}, state, {
-                category:action.category
-            });
         case SET_ADD:
             return Object.assign({}, state, {
                 adding:action.adding
+            });
+        case SET_UPDATE:
+            return Object.assign({}, state, {
+                editing:action.editing,
+                editIndex:action.index
             });
         case SET_ID:
             return Object.assign({}, state, {
                 id:action.id
             });
+        case SET_ADD_DATA:
+            return Object.assign({}, state, {
+                add_data: action.add_data
+            });
+        case SET_UPDATE_DATA:
+                return Object.assign({}, state, {
+                update_data: action.update_data
+        });
         case ADD_EMPRESA:
             return Object.assign({}, state, {
                 empresas: [...state.empresas, action.empresa]
             });
+        case SET_LAST_EMPRESA:
+            return Object.assign({}, state, {
+                empresas:state.empresas.filter( (val, index, arr) => {
+                    if(index != arr.length-1){
+                        return val;
+                    }else{
+                        return action.empresa
+                    }
+                })
+            });
+        case UPDATE_EMPRESA:
+            return Object.assign({}, state, {
+                empresas:state.empresas.filter( (val, index, arr) => {
+                    
+                    if(index == action.index){
+                        
+                        return action.empresa;
+                    }else{
+                        return val;
+                    }
+                })  
+            });
+        
         case DEL_EMPRESA:
             return Object.assign({}, state, {
                 empresas:state.empresas.filter( (val, index, arr) => {
@@ -104,6 +130,15 @@ const reducer = (state=initialState, action) => {
                         return val;
                     }
                 })
+            });
+        case CLEAN_EMPRESAS:
+            return Object.assign({}, state, {
+                empresas:state.empresas.filter( (val, index, arr) => {
+                    if(index > arr.length){
+
+                        return;
+                    }
+                })  
             });
         default:
             return state;

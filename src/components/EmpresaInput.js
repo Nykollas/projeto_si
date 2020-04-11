@@ -3,11 +3,11 @@ import React, { Component } from 'react';
 class Input extends Component {
     render = () => {
 
-        const { placeholder }  = this.props;
+        const { placeholder, inputHandler, value }  = this.props;
 
         return(
             <div className={"empresa-input-container"}>
-                <input  type={"text"} placeholder={placeholder}></input>
+                <input onChange={inputHandler} type={"text"} value={ value } placeholder={placeholder}></input>
             </div>
         )
     }

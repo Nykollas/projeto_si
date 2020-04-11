@@ -4,22 +4,22 @@ export const SET_PASSWORD = 'SET_PASSWORD';
 export const SET_LOGIN_LABEL = 'SET_LOGIN_LABEL';
 export const OPEN_DRAWER = 'OPEN_DRAWER';
 export const IS_INSIDE_DRAWER = 'IS_INSIDE_DRAWER';
-export const SET_PHONE = "SET_PHONE";
-export const SET_ENTERPRISE_EMAIL = "SET_ENTERPRISE_EMAIL";
-export const SET_STREET = "SET_STREET";
-export const SET_PLACE = "SET_PLACE";
-export const SET_CITY = "SET_CITY";
-export const SET_UF = "SET_UF";
-export const SET_CATEGORY = "SET_CATEGORY";
 export const SET_ADD = "SET_ADD";
+export const SET_UPDATE = "SET_UPDATE";
 export const SET_ID = "SET_ID";
-export const ADD_EMPRESA = "SET_EMPRESA";
+export const ADD_EMPRESA = "ADD_EMPRESA";
+export const UPDATE_EMPRESA = "UPDATE_EMPRESA";
 export const DEL_EMPRESA = "DEL_EMPRESA";
+export const SET_ADD_DATA = "SET_ADD_DATA";
+export const SET_UPDATE_DATA = "SET_UPDATE_DATA";
+export const SET_LAST_EMPRESA = "SET_LAST_EMPRESA";
+export const CLEAN_EMPRESAS = "CLEAN_EMPRESAS";
 
 //Login Actions
 const setEmail = (email) => {
     return { type: SET_EMAIL, email: email }
 }
+
 const setPassword = (pswd) => {
     return { type: SET_PASSWORD, password: pswd }
 }
@@ -36,77 +36,126 @@ const isInsideDrawer = (value) => {
     return { type: IS_INSIDE_DRAWER, is_inside_drawer: value }
 }
 
-const setPhone = (value) => {
-    return { type: SET_PHONE, phone: value }
-}
-
-const setEnterpriseEmail = (value) => {
-    return { type: SET_ENTERPRISE_EMAIL, enterprise_email: value }
-}
-
-const setStreet = (value) => {
-    return { type: SET_STREET, street: value }
-}
-
-const setPlace = (value) => {
-    return { type: SET_PLACE, place: value }
-}
-
-const setCity = (value) => {
-    return { type: SET_CITY, city: value }
-}
-
-const setUF = (value) => {
-    return { type: SET_UF, uf: value }
-}
-
-const setCategory = (value) => {
-    return { type: SET_UF, category: value }
-}
-
 const setAdd = (value) => {
     return { type: SET_ADD, adding: value }
+}
+
+const setUpdate = (value, index) => {
+    
+    return { type: SET_UPDATE, editing: value, index:index }
 }
 
 const setId = (value) => {
     return { type: SET_ID, id: value }
 }
 
-const addEmpresa = (value) => {
+const cleanEmpresas = () => {
+    return { type: SET_ID}
+}
+
+const updateEmpresa = (value, index) => {
+    
     return {
-        type: ADD_EMPRESA, empresa: {
+        type: UPDATE_EMPRESA,
+         empresa: {
+            _id:value._id,
             name: value.name,
-            enterprise_email: value.enterprise_email,
+            email: value.email,
             street: value.street,
             place: value.place,
             city: value.city,
             uf: value.uf,
-            tel:value.tel,
+            tel: value.tel,
+            category: value.category
+        },
+        index:index
+    }
+}
+
+const addEmpresa = (value) => {
+    return {
+        type: ADD_EMPRESA, empresa: {
+            _id:value._id,
+            name: value.name,
+            email: value.email,
+            street: value.street,
+            place: value.place,
+            city: value.city,
+            uf: value.uf,
+            tel: value.tel,
             category: value.category
         }
     }
 }
 
-const removeEmpresa = ( value ) => {
+const setLastEmpresa = (value) => {
     return {
-        type: DEL_EMPRESA,index:value
+        type: SET_LAST_EMPRESA, 
+        empresa: {
+            id_:value._id,
+            name: value.name,
+            email: value.email,
+            street: value.street,
+            place: value.place,
+            city: value.city,
+            uf: value.uf,
+            tel: value.tel,
+            category: value.category
+        },
     }
 }
 
+const setAddData = (value) => {
+    return {
+        type: SET_ADD_DATA, add_data: {
+            _id:value._id,
+            name: value.name,
+            email: value.email,
+            street: value.street,
+            place: value.place,
+            city: value.city,
+            uf: value.uf,
+            tel: value.tel,
+            category: value.category
+        }
+    }
+}
+
+const setUpdateData = (value) => {
+    
+    return {
+        type: SET_UPDATE_DATA, update_data: {
+            _id:value._id,
+            name: value.name,
+            email: value.email,
+            street: value.street,
+            place: value.place,
+            city: value.city,
+            uf: value.uf,
+            tel: value.tel,
+            category: value.category
+        }
+    }
+}
+
+const removeEmpresa = (value) => {
+    return {
+        type: DEL_EMPRESA, index: value
+    }
+}
 
 export { setEmail };
 export { setPassword };
 export { setLoginLabel };
 export { openDrawer };
 export { isInsideDrawer };
-export { setPhone };
-export { setEnterpriseEmail };
-export { setStreet };
-export { setPlace };
-export { setCity };
-export { setUF };
-export { setCategory };
 export { setAdd };
+export { setUpdate };
 export { setId };
-export { addEmpresa }
-export { removeEmpresa }
+export { addEmpresa };
+export { removeEmpresa };
+export { setAddData };
+export { setUpdateData  }
+export { setLastEmpresa };
+export { updateEmpresa };
+export { cleanEmpresas };

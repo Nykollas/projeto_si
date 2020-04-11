@@ -9,35 +9,32 @@ class Empresa extends Component {
     constructor(props){
         super(props);
     }
-
-    state = {edit:false}
-    render = () => {
-
-        const { edit } = this.state;
-        const { adding, index,data } = this.props;
-        console.log(adding);
+    render = () => {  
+        const {editing, adding, editIndex, index, data, empresasRef } = this.props;
+        
         return(
             <>
             {adding && index == 0 ? 
-                    <EmpresaCardAdd></EmpresaCardAdd>
+                    <EmpresaCardAdd empresasRef={empresasRef} index={index}></EmpresaCardAdd>
                     :
-                (!edit ?
-                    <EmpresaCard data={data} parentComponent={ this }>
-                    </EmpresaCard>
-                    :
-                    <EmpresaCardEdit data={data} parentComponent={ this } >
-                    </EmpresaCardEdit>
-                )
+                (editing ?
+                     (editIndex == index ?
+                        <EmpresaCardEdit index={index} data={data} parentComponent={ this } ></EmpresaCardEdit>
+                     : 
+                     <EmpresaCard index={index} data={data} parentComponent={ this }></EmpresaCard>)
+                     :
+                    <EmpresaCard index={index} data={data} parentComponent={ this }></EmpresaCard>)
             }
-            </>
-               
+            </>   
         )   
     }
 }
 
 
 const mapStateToProps = state => ({
-    adding: state.adding
+    adding: state.adding,
+    editing: state.editing,
+    editIndex: state.editIndex
 })
 
 

@@ -12,6 +12,35 @@ import * as actions from '../redux/actions'
 
 class Empresas extends Component {
 
+    getData = async () => {
+        console.log('Baixando');
+        const { addEmpresa, empresas, cleanEmpresas } = this.props;
+        await cleanEmpresas();
+        fetch("http://localhost:9000/empresas/list").then((res) => {
+            res.json().then(data => {
+                const empresas_data = data.empresas;
+            
+                empresas_data.map( empresa => {
+                    
+                    empresa = {
+                        _id:empresa._id,
+                        name: empresa.name,
+                        email: empresa.email,
+                        street: empresa.street,
+                        place: empresa.place,
+                        city: empresa.city,
+                        uf: empresa.uf,
+                        category: empresa.category,
+                        tel:empresa.tel,
+                    }
+
+                    addEmpresa(empresa);
+                })
+            })
+        })
+    }
+
+
     add = () => {
         const { adding, setAdd, addEmpresa } = this.props;
         setAdd(true);
@@ -19,7 +48,7 @@ class Empresas extends Component {
 
             const empresa = {
                 name: "",
-                enterprise_email: "",
+                email: "",
                 street: "",
                 place: "",
                 city: "",
@@ -32,34 +61,14 @@ class Empresas extends Component {
         }
     }
 
-    
-
     componentDidMount = () => {
-        const { addEmpresa, empresas } = this.props;
-        fetch("http://localhost:9000/empresas/list").then((res) => {
-            res.json().then(data => {
-                const empresas_data = data.empresas;
-                empresas_data.map( empresa => {
-                    empresa = {
-                        name: empresa.name,
-                        enterprise_email: empresa.email,
-                        street: empresa.street,
-                        place: empresa.place,
-                        city: empresa.city,
-                        uf: empresa.uf,
-                        category: empresa.category,
-                        tel:empresa.tel,
-                    }
-                    addEmpresa(empresa);
-                })
-            })
-        })
+        this.getData()
     }
 
     render = () => {
 
         const { empresas } = this.props;
-    
+
         return (
             <>
                 <Header icon={<Hamburguer />} title={"Empresas"}></Header>
@@ -68,12 +77,13 @@ class Empresas extends Component {
                     <Plus onClick={this.add}></Plus>
                 </div>
                 <Drawer></Drawer>
-                {empresas && empresas.map((value, index, arr) => {
-                    return <Empresa data={value} index={index}></Empresa>
-                })
+                {empresas && empresas.reverse().map((value, index, arr) => {
+                     return <Empresa empresasRef={this}  data={value} index={index}></Empresa>
+                    })
                 }
             </>
         )
+
     }
 }
 

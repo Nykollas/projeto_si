@@ -6,21 +6,79 @@ import EditButton from '../assets/images/editsave';
 
 import TrashIcon from '../assets/images/trash';
 
+import * as actions from '../redux/actions';
+
+import { connect } from 'react-redux';
+
+
+
 class EmpresaCardEdit extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
     }
 
-    onClick = () => {
-        const { parentComponent } = this.props;
-        
-        parentComponent.setState((previousState) => {
-            return {edit:!previousState.edit}
-        });
-        
+    validateData = (data) => {
+
+        return true;
+
     }
 
+    onClick = () => {
+        const { update_data,
+                updateEmpresa,
+                setUpdate,
+                index
+              } = this.props;
+
+        const isValid = this.validateData(update_data);
+        
+        if (isValid) {
+            //updateEmpresa(update_data, index);
+
+            const requestConfig = {
+                method: 'POST',
+
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+
+                body: JSON.stringify(update_data),
+
+            }
+
+            fetch("http://localhost:9000/empresas/update", requestConfig).then(res => {
+
+                res.json().then(response => {
+
+                    console.log(response)
+
+                }).catch(err => {
+
+                    console.log(err);
+
+                });
+
+            }).then(() => {
+
+                setUpdate(false);
+
+            })
+
+        }
+    }
+
+    delete = () => {
+        const { removeEmpresa, index } = this.props;
+        removeEmpresa(index);
+    }
+
+
+    componentDidMount = () => {
+        const { data, setUpdateData } = this.props;
+        
+        setUpdateData(data);
+    }
 
     render = () => {
 
@@ -45,7 +103,7 @@ class EmpresaCardEdit extends Component {
                         <div className={'empresa-category-container'}>
                             <p>Categoria</p>
                         </div>
-                        <EditButton  onClick={ this.onClick } height={140} width={150 }></EditButton>
+                        <EditButton onClick={this.onClick} height={140} width={150}></EditButton>
                     </div>
                 </div>
             </div>
@@ -53,4 +111,15 @@ class EmpresaCardEdit extends Component {
     }
 }
 
-export default EmpresaCardEdit;
+const mapDispatchToProps = actions;
+
+
+const mapStateToProps = (state) => {
+    return {
+        add_data: state.add_data,
+        update_data: state.update_data
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(EmpresaCardEdit);

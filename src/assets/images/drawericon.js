@@ -9,7 +9,7 @@ class Illustration extends Component {
         const {width, height } = this.props;
         
         const viewBox = "0 0 "+width+" "+height
-        console.log(viewBox);
+        
 
         return (<svg width={width} height={height} viewBox={"0 0 300 200"} fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0)">

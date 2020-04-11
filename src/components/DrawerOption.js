@@ -5,7 +5,7 @@ class DrawerOption extends Component {
 
     navigate = () => {
         const {navigateTo} = this.props;
-        console.log(navigateTo);
+        
 
         this.props.history.replace(navigateTo, window.location.pathname);
     }

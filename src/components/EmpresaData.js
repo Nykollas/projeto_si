@@ -19,20 +19,20 @@ class EmpresaData extends Component {
                     <p>{data.tel ? data.tel : "N/A"}</p>
                 </div>
                 <div className={'empresa-data-text-container'}>
-                    <p>{data.enterprise_email ? data.enterprise_email : "N/A"}</p>
+                    <p>{data.email ? data.email : "N/A"}</p>
                 </div>
                 <div className={'empresa-data-text-container'}>
-                    <p>{data.street ? data.enterprise_email : "N/A"}</p>
+                    <p>{data.street ? data.street : "N/A"}</p>
                 </div>
                 <div className={'empresa-data-text-container'}>
-                    <p>{data.place ? data.enterprise_email : "N/A"}</p>
+                    <p>{data.place ? data.place : "N/A"}</p>
                 </div>
                 <div className={'empresa-data-text-container'}
                     style={{ flexDirection: 'row', display: 'flex' }}>
                     <p>{data.city ? data.city : "N/A"}</p>
                     <p>,</p>
                     <div style={{width:12}}></div>
-                    <p>{data.uf ? data.city : "N/A"}</p>
+                    <p>{data.uf ? data.uf : "N/A"}</p>
                 </div>
             </div>
         );
