@@ -22,6 +22,9 @@ function App() {
   return (
     <Router>
       <Switch>
+        <Route path="/">
+          <Login></Login>
+        </Route>
         <Route path="/login">
           <Login></Login>
         </Route>
