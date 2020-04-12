@@ -4,10 +4,10 @@ import { withRouter } from 'react-router';
 class DrawerOption extends Component {
 
     navigate = () => {
-        const {navigateTo} = this.props;
+        const {navigateTo, history} = this.props;
         
 
-        this.props.history.replace(navigateTo, window.location.pathname);
+        history.replace(navigateTo, window.location.pathname);
     }
 
     render = () => {

@@ -9,7 +9,8 @@ class EmpresaData extends Component {
 
     render = () => {
 
-        const { data } = this.props
+        const { data } = this.props;
+
         return (
             <div className={'empresa-text-container'}>
                 <div className={'empresa-data-text-container'}>

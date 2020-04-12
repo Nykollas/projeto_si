@@ -13,7 +13,8 @@ class PasswordRecovery  extends Component {
     render = () => {
         return(
             <> 
-                <Header icon={<Hamburguer/>} 
+                <Header drawer={false}
+                        icon={<Hamburguer/>} 
                         title={"Recuperar Senha"}>
                 </Header>
                 <Drawer></Drawer>

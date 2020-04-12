@@ -12,7 +12,7 @@ class NewPassword  extends Component {
     render = () => {
         return(
             <> 
-            <Header icon={<Hamburguer/>} title={"Recuperar Senha"}></Header>
+            <Header drawer={false} icon={<Hamburguer/>} title={"Recuperar Senha"}></Header>
             <Drawer></Drawer>
                 <Card submitButton={<Button title={"Redefinir"}></Button>} title={"Login"} >
                     <Input placeholder= {'Senha Atual'}></Input>

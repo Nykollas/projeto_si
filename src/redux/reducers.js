@@ -12,7 +12,8 @@ import { SET_PASSWORD,
          SET_LAST_EMPRESA,
          UPDATE_EMPRESA,
          SET_UPDATE,
-         CLEAN_EMPRESAS
+         CLEAN_EMPRESAS,
+         CLEAN_CREDENTIALS
      } from './actions';
 
 const initialState = {
@@ -126,7 +127,7 @@ const reducer = (state=initialState, action) => {
         case DEL_EMPRESA:
             return Object.assign({}, state, {
                 empresas:state.empresas.filter( (val, index, arr) => {
-                    if(index != arr.length - 1){
+                    if(index !== action.index){
                         return val;
                     }
                 })
@@ -140,6 +141,9 @@ const reducer = (state=initialState, action) => {
                     }
                 })  
             });
+        case CLEAN_CREDENTIALS:
+            return Object.assign({}, state, {email:"", password:""});
+
         default:
             return state;
     }

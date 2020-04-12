@@ -3,6 +3,8 @@ import Illustration from '../assets/images/drawericon';
 import { connect } from 'react-redux';
 import * as actions from '../redux/actions';
 
+import { withRouter } from 'react-router';
+
 import DrawerOption from './DrawerOption';
 
 class Drawer extends Component {
@@ -14,12 +16,16 @@ class Drawer extends Component {
     state = {isInside:false}
 
     componentDidMount = () => {
-
-        const { openDrawer } = this.props;
         
+        const { openDrawer, history } = this.props;
+        
+        
+
         document.onmousedown = (event) => {
+            //Previne que o drawer abra na página de login
             
-            const { drawer_open}  = this.props;
+
+            const { drawer_open }  = this.props;
             const drawerRef = this.drawerRef;
             const clickedNode  = event.target;
 
@@ -31,8 +37,13 @@ class Drawer extends Component {
     
 
     isDrawerOpen =  () => {
-        const {drawer_open }  = this.props;
+        const {drawer_open, history }  = this.props;
+        
         if(drawer_open == undefined){
+            return "";
+        }
+        const { pathname } = history.location;
+        if(pathname == "/login"){
             return "";
         }
         
@@ -70,4 +81,6 @@ const mapStateToProps = (state) =>
 
 const mapDispatchToProps = actions;
 
-export default connect(mapStateToProps, mapDispatchToProps)(Drawer);  ;
+const reduxConnected = connect(mapStateToProps, mapDispatchToProps)(Drawer); 
+
+export default withRouter(reduxConnected);

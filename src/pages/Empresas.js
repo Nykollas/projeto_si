@@ -13,10 +13,16 @@ import * as actions from '../redux/actions'
 class Empresas extends Component {
 
     getData = async () => {
-        console.log('Baixando');
+        
         const { addEmpresa, empresas, cleanEmpresas } = this.props;
-        await cleanEmpresas();
-        fetch("http://localhost:9000/empresas/list").then((res) => {
+        cleanEmpresas();
+
+        const requestConfig = {
+            method:'GET',
+            headers:{"Cache-Control":"no-cache"}
+        }
+
+        fetch("http://localhost:9000/empresas/list", requestConfig).then((res) => {
             res.json().then(data => {
                 const empresas_data = data.empresas;
             
@@ -71,7 +77,7 @@ class Empresas extends Component {
 
         return (
             <>
-                <Header icon={<Hamburguer />} title={"Empresas"}></Header>
+                <Header drawer={true} icon={<Hamburguer />} title={"Empresas"}></Header>
                 <div className={'search-container'}>
                     <SearchInput></SearchInput>
                     <Plus onClick={this.add}></Plus>

@@ -5,20 +5,35 @@ import Card from '../components/MainCard';
 import Input from '../components/Input';
 import Illustration from '../assets/images/illustration';
 import Button from '../components/Button';
+import Drawer from '../components/Drawer';
 import { connect} from 'react-redux';
 import  * as actions from '../redux/actions'
 
 class Login  extends Component {
+
+
+    handleEmail = (event) => {
+        const { setEmail } = this.props;
+        const email = event.target.value;
+        setEmail(email);
+    }
+    handlePassword = (event) => {
+        const {setPassword} = this.props;
+        const password = event.target.value;
+        setPassword(password);
+    }
+
     render = () => {
 
-        const {setEmail, setPassword, setLoginLabel } = this.props;
+        const {setLoginLabel } = this.props;
         
         return(
             <> 
-                <Header icon = { <Hamburguer/> } title = { "Login" }></Header>
+                <Header drawer={false} icon = { <Hamburguer/> } title = { "Login" }></Header>
+                <Drawer></Drawer>
                 <Card submitButton = { <Button buttonAction={setLoginLabel} title = {"Entrar" }></Button> } title = { "Login" }>
-                    <Input inputAction = { setEmail } placeholder = { 'E-mail' }></Input>
-                    <Input inputAction = { setPassword } placeholder = { 'Senha' }></Input>
+                    <Input inputHandler = { this.handleEmail } placeholder = { 'E-mail' }></Input>
+                    <Input inputHandler = { this.handlePassword } placeholder = { 'Senha' }></Input>
                     <div className = { "password-recovery-label-container" }>
                         <p className = { "password-recovery-label" }>Esqueci minha senha</p>
                     </div>

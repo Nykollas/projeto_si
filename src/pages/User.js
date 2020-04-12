@@ -12,7 +12,7 @@ class Empresas extends Component {
     render = () => {
         return(
             <>
-                <Header icon={<Hamburguer/>} title={"Empresas"}></Header>
+                <Header drawer={true} icon={<Hamburguer/>} title={"Empresas"}></Header>
                 <Drawer></Drawer>
                 <UserData></UserData>
                 <UserDataEdit name={"Nome"} email={"Email"} password={"************"}/>

@@ -13,7 +13,7 @@ class PasswordRecoveryCode  extends Component {
     render = () => {
         return(
             <> 
-            <Header icon={<Hamburguer/>} title={"Recuperar Senha"}></Header>
+            <Header drawer={false} icon={<Hamburguer/>} title={"Recuperar Senha"}></Header>
                 <Drawer></Drawer>
                 <Card  submitButton={<Button title={"Enviar"}></Button>} title={"Login"} >
                     <Input placeholder= {'Código'}></Input>

@@ -12,6 +12,13 @@ import  * as actions from '../redux/actions'
 class Dashboard extends Component {
 
 
+    componentDidMount = () => {
+        const { cleanCredentials } = this.props;
+        cleanCredentials();
+    }
+
+
+
     render = () => {
 
         const data = [
@@ -39,7 +46,7 @@ class Dashboard extends Component {
 
         return(
             <>
-                <Header icon={<Hamburguer/>} title={"Dashboard"}></Header>
+                <Header drawer={true} icon={<Hamburguer/>} title={"Dashboard"}></Header>
                 <Drawer></Drawer>
                 <div style={{marginBottom:64}}>
                     <Carousel></Carousel>

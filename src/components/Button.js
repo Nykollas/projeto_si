@@ -9,7 +9,9 @@ class Button extends Component {
     state = {label:""}
 
     constructor(props){
+
         super(props);
+
     }
 
     submit = () => {
@@ -18,25 +20,34 @@ class Button extends Component {
         const { email, password } = this.props;
 
         //Recebe a buttonAction do componente pai
-        const { setLoginLabel } = this.props;
-
+        const { setLoginLabel} = this.props;
+        
         //Atribui uma string vazia caso os valores da senha e email sejam 
         //null ou undefined
         let email_val = email ? email : "";
+
         let passwd = password ? password : "";
 
         const data  = {
-            email:   email_val,
-            password:  passwd
-        }
 
+            email:   email_val,
+
+            password:  passwd
+
+        }
+        
         axios.post('http://localhost:9000/login/auth', data).then(res => {    
+            
             this.props.history.replace("/home", "/login/auth");
+
         }).catch(err => {
             
             if(err && err.response){
+                console.log(err.response)
                 const label = err.response.data.error;
+
                 setLoginLabel(label);
+
             }            
         })
     }

@@ -14,6 +14,7 @@ export const SET_ADD_DATA = "SET_ADD_DATA";
 export const SET_UPDATE_DATA = "SET_UPDATE_DATA";
 export const SET_LAST_EMPRESA = "SET_LAST_EMPRESA";
 export const CLEAN_EMPRESAS = "CLEAN_EMPRESAS";
+export const CLEAN_CREDENTIALS = "CLEAN_CREDENTIALS";
 
 //Login Actions
 const setEmail = (email) => {
@@ -50,8 +51,11 @@ const setId = (value) => {
 }
 
 const cleanEmpresas = () => {
-    return { type: SET_ID}
+    return { type: CLEAN_EMPRESAS}
 }
+
+
+
 
 const updateEmpresa = (value, index) => {
     
@@ -144,6 +148,12 @@ const removeEmpresa = (value) => {
     }
 }
 
+const cleanCredentials = () => {
+    return {
+        type:CLEAN_CREDENTIALS
+    }
+}
+
 export { setEmail };
 export { setPassword };
 export { setLoginLabel };
@@ -159,3 +169,4 @@ export { setUpdateData  }
 export { setLastEmpresa };
 export { updateEmpresa };
 export { cleanEmpresas };
+export { cleanCredentials }

@@ -10,8 +10,6 @@ import * as actions from '../redux/actions';
 
 import { connect } from 'react-redux';
 
-
-
 class EmpresaCardEdit extends Component {
 
     constructor(props) {
@@ -26,9 +24,7 @@ class EmpresaCardEdit extends Component {
 
     onClick = () => {
         const { update_data,
-                updateEmpresa,
                 setUpdate,
-                index
               } = this.props;
 
         const isValid = this.validateData(update_data);
@@ -68,9 +64,38 @@ class EmpresaCardEdit extends Component {
         }
     }
 
-    delete = () => {
-        const { removeEmpresa, index } = this.props;
-        removeEmpresa(index);
+    delete = (id) => {
+        const { removeEmpresa, setUpdate, index } = this.props;
+        const requestConfig = {
+            method: 'DELETE',
+
+            headers: {
+                'Content-Type': 'application/json'
+            },
+
+            body: JSON.stringify({_id:id}),
+
+        }
+
+        fetch("http://localhost:9000/empresas/remove", requestConfig).then(res => {
+
+            res.json().then(response => {
+
+                console.log(response)
+
+            }).catch(err => {
+
+                console.log(err);
+
+            });
+
+        }).then(() => {
+            removeEmpresa(index);
+            setUpdate(false);
+            
+
+        })
+
     }
 
 
@@ -97,7 +122,7 @@ class EmpresaCardEdit extends Component {
                 <div className={'empresa-col'}>
                     <div className={'empresa-row'}>
                         <EmpresaForm data={data}></EmpresaForm>
-                        <TrashIcon size={120}></TrashIcon>
+                        <TrashIcon onClick={() => this.delete(data._id)} size={120}></TrashIcon>
                     </div>
                     <div className={'empresa-row'}>
                         <div className={'empresa-category-container'}>
