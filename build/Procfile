@@ -1,1 +1,2 @@
-web: npx serve -a -build
+web: npx serve -s build
+
