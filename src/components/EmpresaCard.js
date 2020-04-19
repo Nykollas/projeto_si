@@ -48,7 +48,7 @@ class EmpresaCard extends Component {
                         <div className={'empresa-category-container'}>
                             <p>Categoria</p>
                         </div>
-                        <EditButton onClick={ this.onClick } height={ 150 } widht={ 150 }></EditButton>
+                        <EditButton onClick={ this.onClick } height={ 160 } widht={ 150 }></EditButton>
                     </div>
                 </div>
             </div>

@@ -15,16 +15,11 @@ import User from './pages/User';
 
 
 
-
-
-
 function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/">
-          <Login></Login>
-        </Route>
+
         <Route path="/login">
           <Login></Login>
         </Route>
@@ -47,6 +42,9 @@ function App() {
         </Route>
         <Route path="/user">
             <User></User>
+        </Route>
+        <Route path="/">
+          <Login></Login>
         </Route>
       </Switch>
     </Router>

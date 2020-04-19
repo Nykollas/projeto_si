@@ -43,9 +43,7 @@ class Button extends Component {
         }).catch(err => {
             
             if(err && err.response){
-                console.log(err.response)
                 const label = err.response.data.error;
-
                 setLoginLabel(label);
 
             }            
