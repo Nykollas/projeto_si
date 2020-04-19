@@ -9,6 +9,8 @@ import * as actions from '../redux/actions';
 
 import { connect } from 'react-redux';
 
+import { public_url } from '../config.json';
+
 class EmpresaCardAdd extends Component {
 
     constructor(props) {
@@ -39,7 +41,7 @@ class EmpresaCardAdd extends Component {
 
         if (isValid) {
 
-            fetch("http://localhost:9000/empresas/create", requestConfig).then(res => {
+            fetch(public_url+"empresas/create", requestConfig).then(res => {
                 res.json().then(response => {
                     empresasRef.getData();
                 }).catch(err => {

@@ -10,6 +10,8 @@ import * as actions from '../redux/actions';
 
 import { connect } from 'react-redux';
 
+import {public_url} from '../config.json';
+
 class EmpresaCardEdit extends Component {
 
     constructor(props) {
@@ -43,7 +45,7 @@ class EmpresaCardEdit extends Component {
 
             }
 
-            fetch("http://localhost:9000/empresas/update", requestConfig).then(res => {
+            fetch(public_url + "empresas/update", requestConfig).then(res => {
 
                 res.json().then(response => {
 
@@ -77,7 +79,7 @@ class EmpresaCardEdit extends Component {
 
         }
 
-        fetch("http://localhost:9000/empresas/remove", requestConfig).then(res => {
+        fetch(public_url+"empresas/remove", requestConfig).then(res => {
 
             res.json().then(response => {
 
@@ -145,6 +147,5 @@ const mapStateToProps = (state) => {
         update_data: state.update_data
     }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(EmpresaCardEdit);
