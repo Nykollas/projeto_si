@@ -9,7 +9,7 @@ import * as actions from '../redux/actions';
 
 import { connect } from 'react-redux';
 
-import { public_url } from '../config';
+
 
 class EmpresaCardAdd extends Component {
 
@@ -41,7 +41,7 @@ class EmpresaCardAdd extends Component {
 
         if (isValid) {
 
-            fetch(public_url+"empresas/create", requestConfig).then(res => {
+            fetch("https://backend-si.herokuapp.com/empresas/create", requestConfig).then(res => {
                 res.json().then(response => {
                     empresasRef.getData();
                 }).catch(err => {

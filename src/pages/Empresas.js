@@ -22,7 +22,7 @@ class Empresas extends Component {
             headers:{"Cache-Control":"no-cache"}
         }
 
-        fetch("http://localhost:9000/empresas/list", requestConfig).then((res) => {
+        fetch("https://backend-si.herokuapp.com/empresas/list", requestConfig).then((res) => {
             res.json().then(data => {
                 const empresas_data = data.empresas;
             
