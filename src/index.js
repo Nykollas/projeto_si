@@ -8,6 +8,7 @@ import { createStore } from 'redux';
 import reducers from './redux/reducers';
 import { Provider } from 'react-redux';
 
+console.log('public url: ', process.env.PUBLIC_URL)
 
 const store = createStore(reducers)
 
