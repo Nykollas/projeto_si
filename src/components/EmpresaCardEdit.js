@@ -10,7 +10,7 @@ import * as actions from '../redux/actions';
 
 import { connect } from 'react-redux';
 
-import {public_url} from '../config.json';
+import {public_url} from '../config';
 
 class EmpresaCardEdit extends Component {
 
