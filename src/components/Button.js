@@ -36,7 +36,7 @@ class Button extends Component {
 
         }
         
-        axios.post('https://projeto-si.herokuapp.com/login/auth', data).then(res => {    
+        axios.post('https://backend-si.herokuapp.com/login/auth', data).then(res => {    
             
             this.props.history.replace("/home", "/login/auth");
 

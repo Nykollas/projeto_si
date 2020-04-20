@@ -6,6 +6,9 @@ class DrawerOption extends Component {
     navigate = () => {
         const {navigateTo, history} = this.props;
         
+        if(navigateTo=="/login"){
+            
+        }
 
         history.replace(navigateTo, window.location.pathname);
     }
