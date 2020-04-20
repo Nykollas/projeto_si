@@ -32,8 +32,8 @@ class Login  extends Component {
                 <Header drawer={false} icon = { <Hamburguer/> } title = { "Login" }></Header>
                 <Drawer></Drawer>
                 <Card submitButton = { <Button buttonAction={setLoginLabel} title = {"Entrar" }></Button> } title = { "Login" }>
-                    <Input inputHandler = { this.handleEmail } placeholder = { 'E-mail' }></Input>
-                    <Input inputHandler = { this.handlePassword } placeholder = { 'Senha' }></Input>
+                    <Input  inputHandler = { this.handleEmail } placeholder = { 'E-mail' }></Input>
+                    <Input type={"password"} inputHandler = { this.handlePassword } placeholder = { 'Senha' }></Input>
                     <div className = { "password-recovery-label-container" }>
                         <p className = { "password-recovery-label" }>Esqueci minha senha</p>
                     </div>

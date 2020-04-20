@@ -9,11 +9,11 @@ class Input extends Component {
     }
 
     render = () => {
-        const { placeholder, inputHandler }  = this.props;
+        const { placeholder, inputHandler, type }  = this.props;
     
         return(
             <div className={"card-input-container"}>
-                <input onChange={inputHandler}  type = { "text" } placeholder = { placeholder }></input>
+                <input onChange={inputHandler}  type = {type ? type : "text" } placeholder = { placeholder }></input>
             </div>
         )
     }
