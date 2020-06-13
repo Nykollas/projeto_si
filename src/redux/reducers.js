@@ -1,149 +1,125 @@
-import { SET_PASSWORD,
-         SET_EMAIL,
-         SET_LOGIN_LABEL,
-         OPEN_DRAWER,
-         IS_INSIDE_DRAWER,
-         SET_ADD,
-         SET_ID,
-         SET_ADD_DATA,
-         SET_UPDATE_DATA,
-         ADD_EMPRESA,
-         DEL_EMPRESA,
-         SET_LAST_EMPRESA,
-         UPDATE_EMPRESA,
-         SET_UPDATE,
-         CLEAN_EMPRESAS,
-         CLEAN_CREDENTIALS
-     } from './actions';
+import {
+    SET_PASSWORD,
+    SET_EMAIL,
+    SET_LOGIN_LABEL,
+    OPEN_DRAWER,
+    IS_INSIDE_DRAWER,
+    SET_ID,
+    SET_DATA,
+    ADD_EMPRESA,
+    DEL_EMPRESA,
+    SET_LAST_EMPRESA,
+    UPDATE_EMPRESA,
+    CLEAN_EMPRESAS,
+    CLEAN_CREDENTIALS,
+    OPEN_MODAL
+} from './actions';
 
 const initialState = {
 
-    id:"",
-    password:"",
-    email:"",
-    login_label:"",
-    drawer_open:undefined,
-    is_inside_drawer:"",
-    adding:false,
-    editing:false,
-    empresas:new Array(),
-
-    editIndex:0,
-
-    add_data:{
-        _id:"",
-        name:"",
-        phone:"",
-        email:"",
-        street:"",
-        place:"",
-        city:"",
-        uf:"",
+    id: "",
+    password: "",
+    email: "",
+    login_label: "",
+    drawer_open: undefined,
+    is_inside_drawer: "",
+    empresas: new Array(),
+    editIndex: 0,
+    modal: false,
+    modalType: 1, // 1, 2 or 3,
+    data: {
+        name: "",
+        phone: "",
+        email: "",
+        street: "",
+        place: "",
+        city: "",
+        uf: "",
+        hashtags:new Array(),
     },
-
-    update_data:{
-        _id:"",
-        name:"",
-        phone:"",
-        email:"",
-        street:"",
-        place:"",
-        city:"",
-        uf:"",
-    },
-
 }
 
-const reducer = (state=initialState, action) => {
-    switch(action.type){
+const reducer = (state = initialState, action) => {
+    switch (action.type) {
         case SET_PASSWORD:
             return Object.assign({}, state, {
-                password:action.password
+                password: action.password
             })
         case SET_EMAIL:
             return Object.assign({}, state, {
-                email:action.email
+                email: action.email
             });
         case SET_LOGIN_LABEL:
             return Object.assign({}, state, {
-                login_label:action.label
+                login_label: action.label
             });
         case OPEN_DRAWER:
             return Object.assign({}, state, {
-                drawer_open:action.drawer_open
+                drawer_open: action.drawer_open
             });
         case IS_INSIDE_DRAWER:
             return Object.assign({}, state, {
-                is_inside_drawer:action.is_inside_drawer
-            });
-        case SET_ADD:
-            return Object.assign({}, state, {
-                adding:action.adding
-            });
-        case SET_UPDATE:
-            return Object.assign({}, state, {
-                editing:action.editing,
-                editIndex:action.index
+                is_inside_drawer: action.is_inside_drawer
             });
         case SET_ID:
             return Object.assign({}, state, {
-                id:action.id
+                id: action.id
             });
-        case SET_ADD_DATA:
+        case SET_DATA:
             return Object.assign({}, state, {
-                add_data: action.add_data
+                data: action.data
             });
-        case SET_UPDATE_DATA:
-                return Object.assign({}, state, {
-                update_data: action.update_data
-        });
+
         case ADD_EMPRESA:
             return Object.assign({}, state, {
                 empresas: [...state.empresas, action.empresa]
             });
         case SET_LAST_EMPRESA:
             return Object.assign({}, state, {
-                empresas:state.empresas.filter( (val, index, arr) => {
-                    if(index != arr.length-1){
+                empresas: state.empresas.filter((val, index, arr) => {
+                    if (index != arr.length - 1) {
                         return val;
-                    }else{
+                    } else {
                         return action.empresa
                     }
                 })
             });
         case UPDATE_EMPRESA:
             return Object.assign({}, state, {
-                empresas:state.empresas.filter( (val, index, arr) => {
-                    
-                    if(index == action.index){
-                        
+                empresas: state.empresas.filter((val, index, arr) => {
+
+                    if (index == action.index) {
+
                         return action.empresa;
-                    }else{
+                    } else {
                         return val;
                     }
-                })  
+                })
             });
-        
+
         case DEL_EMPRESA:
             return Object.assign({}, state, {
-                empresas:state.empresas.filter( (val, index, arr) => {
-                    if(index !== action.index){
+                empresas: state.empresas.filter((val, index, arr) => {
+                    if (index !== action.index) {
                         return val;
                     }
                 })
             });
         case CLEAN_EMPRESAS:
             return Object.assign({}, state, {
-                empresas:state.empresas.filter( (val, index, arr) => {
-                    if(index > arr.length){
+                empresas: state.empresas.filter((val, index, arr) => {
+                    if (index > arr.length) {
 
                         return;
                     }
-                })  
+                })
             });
-        case CLEAN_CREDENTIALS:
-            return Object.assign({}, state, {email:"", password:""});
 
+        case CLEAN_CREDENTIALS:
+            return Object.assign({}, state, { email: "", password: "" });
+
+        case OPEN_MODAL:
+            return Object.assign({}, state, { modal: action.modal, modalType: action.modalType, data: action.data });
         default:
             return state;
     }

@@ -11,12 +11,12 @@ import  * as actions from '../redux/actions'
 
 class Login  extends Component {
 
-
     handleEmail = (event) => {
         const { setEmail } = this.props;
         const email = event.target.value;
         setEmail(email);
     }
+
     handlePassword = (event) => {
         const {setPassword} = this.props;
         const password = event.target.value;
@@ -29,7 +29,7 @@ class Login  extends Component {
         
         return(
             <> 
-                <Header drawer={false} icon = { <Hamburguer/> } title = { "Login" }></Header>
+                <Header drawer={false} icon = { <Hamburguer/> }></Header>
                 <Drawer></Drawer>
                 <Card submitButton = { <Button buttonAction={setLoginLabel} title = {"Entrar" }></Button> } title = { "Login" }>
                     <Input  inputHandler = { this.handleEmail } placeholder = { 'E-mail' }></Input>

@@ -13,16 +13,10 @@ import PasswordRecovery from './pages/PasswordRecovery';
 import PasswordRecoveryCode from './pages/PasswordRecoveryCode'
 import User from './pages/User';
 
-
-
 function App() {
   return (
     <Router>
       <Switch>
-
-        <Route path="/login">
-          <Login></Login>
-        </Route>
         <Route path="/register">
         </Route>
         <Route path="/empresas">

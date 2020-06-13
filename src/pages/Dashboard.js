@@ -17,8 +17,6 @@ class Dashboard extends Component {
         cleanCredentials();
     }
 
-
-
     render = () => {
 
         const data = [

@@ -2,34 +2,34 @@ import React, { Component } from 'react';
 import Header from '../components/Header';
 import Hamburguer from '../assets/images/hamburguer';
 import Drawer from '../components/Drawer';
-import Empresa from '../components/Empresa';
+import EmpresasRow from '../components/EmpresasRow';
 import SearchInput from '../components/SearchInput';
 import Plus from '../assets/images/plus';
-
+import ModalSet from '../components/ModalSet.js';
+import ModalShow from '../components/ModalShow';
+import ModalAdd from '../components/ModalAdd';
 import { connect } from 'react-redux';
+import * as actions from '../redux/actions';
 
-import * as actions from '../redux/actions'
+import config from '../config';
 
 class Empresas extends Component {
-
     getData = async () => {
-        
-        const { addEmpresa, empresas, cleanEmpresas } = this.props;
-        cleanEmpresas();
+
+        const { addEmpresa, cleanEmpresas, empresas } = this.props;
 
         const requestConfig = {
-            method:'GET',
-            headers:{"Cache-Control":"no-cache"}
+            method: 'GET',
+            headers: { "Cache-Control": "no-cache" }
         }
 
-        fetch("https://backend-si.herokuapp.com/empresas/list", requestConfig).then((res) => {
+        await fetch(config.host + "/empresas/list", requestConfig).then(async (res) => {
+            cleanEmpresas();
             res.json().then(data => {
                 const empresas_data = data.empresas;
-            
-                empresas_data.map( empresa => {
-                    
+                empresas_data.map(empresa => {
                     empresa = {
-                        _id:empresa._id,
+                        _id: empresa._id,
                         name: empresa.name,
                         email: empresa.email,
                         street: empresa.street,
@@ -37,34 +37,32 @@ class Empresas extends Component {
                         city: empresa.city,
                         uf: empresa.uf,
                         category: empresa.category,
-                        tel:empresa.tel,
+                        tel: empresa.tel,
+                        img:empresa.img,
+                        hashtags:empresa.hashtags
                     }
-
                     addEmpresa(empresa);
                 })
             })
         })
     }
 
+    splitArrayIntoChunksOfLen(arr, len) {
+        var chunks = [], i = 0, n = arr.length;
+        while (i < n) {
+            chunks.push(arr.slice(i, i += len));
+        }
+        return chunks;
+    }
 
     add = () => {
-        const { adding, setAdd, addEmpresa } = this.props;
-        setAdd(true);
-        if(!adding){
-
-            const empresa = {
-                name: "",
-                email: "",
-                street: "",
-                place: "",
-                city: "",
-                uf: "",
-                category: "",
-                tel:"",
-            }
-
-            addEmpresa(empresa);
-        }
+        const { openModal, data } = this.props;
+        document.getElementsByTagName('body')[0].className = "scroll-stopped";
+        openModal({
+            modal: true,
+            modalType: 3,
+            data:data
+        })
     }
 
     componentDidMount = () => {
@@ -73,7 +71,7 @@ class Empresas extends Component {
 
     render = () => {
 
-        const { empresas } = this.props;
+        const { empresas, modal, modalType } = this.props;
 
         return (
             <>
@@ -83,10 +81,20 @@ class Empresas extends Component {
                     <Plus onClick={this.add}></Plus>
                 </div>
                 <Drawer></Drawer>
-                {empresas && empresas.reverse().map((value, index, arr) => {
-                     return <Empresa empresasRef={this}  data={value} index={index}></Empresa>
+                <div className={"empresas"}>
+                    {empresas && this.splitArrayIntoChunksOfLen(empresas.reverse(), 2).map((value, index, arr) => {
+
+                        return <EmpresasRow empresasRef={this} empresas={value} index={index}></EmpresasRow>
                     })
-                }
+                    }
+                </div>
+                {modal ? (modalType == 1 ?
+                             <ModalShow empresasRef={this}></ModalShow> 
+                            : 
+                            (modalType == 2 ? 
+                                <ModalSet empresasRef={this} ></ModalSet> 
+                                : <ModalAdd empresasRef={this}></ModalAdd>)) 
+                                : <></>}
             </>
         )
 
@@ -94,8 +102,10 @@ class Empresas extends Component {
 }
 
 const mapStateToProps = state => ({
-    adding: state.adding,
-    empresas: state.empresas
+    empresas: state.empresas,
+    modal: state.modal,
+    modalType: state.modalType,
+    data:state.data
 })
 
 const mapDispatchToProps = actions;

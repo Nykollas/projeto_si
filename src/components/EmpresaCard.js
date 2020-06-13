@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import EmpresaData from '../components/EmpresaData';
 import Hashtags from '../components/Hashtags';
-
 import EditButton from '../assets/images/editbutton';
 import PlusIcon from '../assets/images/plus';
-
 import * as actions from '../redux/actions';
-
 import { connect } from 'react-redux';
 
 class EmpresaCard extends Component {
@@ -16,40 +13,41 @@ class EmpresaCard extends Component {
     }
 
     onClick = () => {
-        const { setUpdate, index } = this.props;
-
+        const { data } = this.props;
         
-
-       setUpdate(true, index);
-        
+        const { openModal } = this.props;
+        document.getElementsByTagName('body')[0].className = "scroll-stopped";
+        openModal({modal:true, modalType:2, data:data});
     }
 
-
+    show = () => {
+        const { data } = this.props;
+        
+        const { openModal } = this.props;
+        document.getElementsByTagName('body')[0].className = "scroll-stopped";
+        openModal({ modal:true, modalType:3, data:data });
+    }
 
     render = () => {
-
         const { data } = this.props;
-
+        console.log(data);
+        
         return (
             <div className={'empresa-card-container'}>
                 <div className={'empresa-col'}>
-                    <div className={'empresa-row'}>
-                        <img src={'https://www.w3schools.com/w3css/img_lights.jpg'}></img>
+                    <div onClick={this.show} className={'empresa-row'}>
+                        <img src={data.img}></img>
+                    </div>
+                    <div onClick={this.show} className={'empresa-category-container'}>
+                            <p>{data.category}</p>
                     </div>
                     <div className={'empresa-row'}>
-                        <Hashtags></Hashtags>
-                    </div>
-                </div>
-                <div className={'empresa-col'}>
-                    <div className={'empresa-row'}>
-                        <EmpresaData data={data}></EmpresaData>
-                    </div>
-                    <div className={'empresa-row'}>
-                        <div className={'empresa-category-container'}>
-                            <p>Categoria</p>
+                        <Hashtags hashtags={data.hashtags}></Hashtags>
+                        <div style={{display:'flex', alignItems:'flex-end', justifyContent:'flex-end'}}>
+                            <EditButton onClick={ this.onClick } height={ 160 } widht={ 150 }></EditButton>
                         </div>
-                        <EditButton onClick={ this.onClick } height={ 160 } widht={ 150 }></EditButton>
                     </div>
+
                 </div>
             </div>
         );
@@ -57,7 +55,6 @@ class EmpresaCard extends Component {
 }
 const mapDispatchToProps = actions;
 
-const mapStateToProps= (state) => ({empresas:state.empresas});
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(EmpresaCard);
+export default connect(null, mapDispatchToProps)(EmpresaCard);

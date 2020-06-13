@@ -5,173 +5,94 @@ import { connect } from 'react-redux';
 
 class EmpresaForm extends Component {
 
-    state = {
-
-        form_name: "",
-        form_phone: "",
-        form_email: "",
-        form_street: "",
-        form_place: "",
-        form_city: "",
-        form_uf: ""
-
-    }
-
     handleName = (event) => {
-        const { setAddData,
-                setUpdateData,
-                update_data,
-                add_data,
-                adding } = this.props;
-        if (adding) {
-            let dados = add_data;
-            dados.name = event.target.value;
-            setAddData(dados);
-        } else {
-            let dados = update_data;
-            dados.name = event.target.value;
-            setUpdateData(dados);
-   
-        }
+        const { setData,
+            data,
+        } = this.props;
 
+        data.name = event.target.value;
+        console.log(data.name);
+        setData(data);
     }
+
 
     handlePhone = (event) => {
-        const { setAddData, setUpdateData,update_data, add_data, adding } = this.props;
-         if (adding) {
-            const dados = add_data;
-            dados.tel = event.target.value;
-            setAddData(dados)
-        } else {
-            const dados = update_data;
-            dados.tel = event.target.value;
-            setUpdateData(dados);
-        }
+        const { setData,
+            data,
+        } = this.props;
+        data.tel = event.target.value;
+        setData(data)
     }
 
     handleEmail = (event) => {
-        const { setAddData,
-                setUpdateData,
-                update_data,
-                add_data,
-                adding } = this.props;
-
-         if (adding) {
-            const dados = add_data;
-            dados.email = event.target.value;
-            setAddData(dados);
-        } else {
-            const dados = update_data;
-            dados.email = event.target.value;
-        
-            setUpdateData(dados);
-        }
+        const { setData,
+            data,
+        } = this.props;
+        data.email = event.target.value;
+        setData(data);
     }
 
     handleStreet = (event) => {
-        const { setAddData,
-                setUpdateData,
-                update_data,
-                add_data, adding } = this.props;
-
-         if (adding) {
-
-            const dados = add_data;
-            dados.street = event.target.value;
-            setAddData(dados)
-
-        } else {
-
-            const dados = update_data;
-            dados.street = event.target.value;
-            setUpdateData(dados);
-
-        }
+        const { setData,
+            data,
+        } = this.props;
+        data.street = event.target.value;
+        setData(data);
     }
     handlePlace = (event) => {
-        const { setAddData,
-                setUpdateData,
-                update_data,
-                add_data,
-                adding } = this.props;
-
-         if (adding) {
-            const dados = add_data;
-            dados.place = event.target.value;
-            setAddData(dados)
-        } else {
-            const dados = update_data;
-            dados.place = event.target.value;
-            setUpdateData(dados);
-        }
+        const { setData,
+            data,
+        } = this.props;
+        data.place = event.target.value;
+        setData(data)
     }
 
     handleCity = (event) => {
-        const { setAddData,
-                setUpdateData,
-                update_data,
-                add_data,
-                adding } = this.props;
-         if (adding) {
-            const dados = add_data;
-            dados.city = event.target.value;
-            setAddData(dados)
-        } else {
-            const dados = update_data;
-            dados.city = event.target.value;
-            setUpdateData(dados);
-        }
+        const { setData,
+            data,
+        } = this.props;
+        data.city = event.target.value;
+        setData(data)
     }
 
     handleUf = (event) => {
-        const { setAddData,
-                setUpdateData,
-                update_data,
-                add_data, adding } = this.props;
-
-         if (adding) {
-
-            const dados = add_data;
-            dados.uf = event.target.value;
-            setAddData(dados);
-
-        } else {
-
-            const dados = update_data;
-            dados.uf = event.target.value;
-            setUpdateData(dados);
-
-        }
+        const { setData,
+            data,
+        } = this.props;
+        data.uf = event.target.value;
+        setData(data);
     }
 
-    componentDidMount = () => {
-        
+    handleCategory = (event) => {
+        const { setData,
+            data,
+        } = this.props;
+        data.category = event.target.value;
+        setData(data);
     }
-
+    
     render = () => {
 
-        const { data, update_data,adding, add_data }  = this.props;
-        
+        const { data } = this.props;
         return (
             <div className={'empresa-inputs-container'}>
-                <Input inputHandler={this.handleName}   value={adding ? add_data.name : update_data.name} placeholder={"Nome"}></Input>
-                <Input inputHandler={this.handlePhone}  value={adding ? add_data.tel : update_data.tel} placeholder={"Telefone"}></Input>
-                <Input inputHandler={this.handleEmail}  value={adding ? add_data.email : update_data.email } placeholder={"E-mail"}></Input>
-                <Input inputHandler={this.handleStreet} value={adding ? add_data.street : update_data.street} placeholder={"Rua"}></Input>
-                <Input inputHandler={this.handlePlace}  value={adding ? add_data.place : update_data.place} placeholder={"Bairro"}></Input>
+                <Input inputHandler={this.handleName} value={data ? data.name : ""} placeholder={"Nome"}></Input>
+                <Input inputHandler={this.handlePhone} value={data ? data.tel : ""} placeholder={"Telefone"}></Input>
+                <Input inputHandler={this.handleEmail} value={data  ? data.email : ""} placeholder={"E-mail"}></Input>
+                <Input inputHandler={this.handleStreet} value={data ? data.street : ""} placeholder={"Rua"}></Input>
+                <Input inputHandler={this.handlePlace} value={data ? data.place : ""} placeholder={"Bairro"}></Input>
                 <div style={{ display: 'flex', flexDirection: 'row' }}>
-                    <Input inputHandler={this.handleCity }  value={ adding ? add_data.city : update_data.city } placeholder={"Cidade"}></Input>
-                    <Input inputHandler={this.handleUf }  value={adding ? add_data.uf : update_data.uf} placeholder={"Estado"}></Input>
+                    <Input inputHandler={this.handleCity} value={data ? data.city : ""} placeholder={"Cidade"}></Input>
+                    <Input inputHandler={this.handleUf} value={data ? data.uf : ""} placeholder={"Estado"}></Input>
                 </div>
+                <Input inputHandler={this.handleCategory} value={data ? data.category : ""} placeholder={"Categoria"}></Input>
             </div>
         );
     }
 }
 
-const mapStateToProps = (state) => ({ 
-    add_data: state.add_data ,
-    update_data:state.update_data,
-    adding:state.adding
+const mapStateToProps = (state) => ({
+    data: state.data,
 });
 
 const mapDispatchToProps = actions;

@@ -4,17 +4,15 @@ export const SET_PASSWORD = 'SET_PASSWORD';
 export const SET_LOGIN_LABEL = 'SET_LOGIN_LABEL';
 export const OPEN_DRAWER = 'OPEN_DRAWER';
 export const IS_INSIDE_DRAWER = 'IS_INSIDE_DRAWER';
-export const SET_ADD = "SET_ADD";
-export const SET_UPDATE = "SET_UPDATE";
+export const SET_DATA = "SET_DATA";
 export const SET_ID = "SET_ID";
 export const ADD_EMPRESA = "ADD_EMPRESA";
 export const UPDATE_EMPRESA = "UPDATE_EMPRESA";
 export const DEL_EMPRESA = "DEL_EMPRESA";
-export const SET_ADD_DATA = "SET_ADD_DATA";
-export const SET_UPDATE_DATA = "SET_UPDATE_DATA";
 export const SET_LAST_EMPRESA = "SET_LAST_EMPRESA";
 export const CLEAN_EMPRESAS = "CLEAN_EMPRESAS";
 export const CLEAN_CREDENTIALS = "CLEAN_CREDENTIALS";
+export const OPEN_MODAL = "OPEN_MODAL";
 
 //Login Actions
 const setEmail = (email) => {
@@ -37,32 +35,21 @@ const isInsideDrawer = (value) => {
     return { type: IS_INSIDE_DRAWER, is_inside_drawer: value }
 }
 
-const setAdd = (value) => {
-    return { type: SET_ADD, adding: value }
-}
-
-const setUpdate = (value, index) => {
-    
-    return { type: SET_UPDATE, editing: value, index:index }
-}
 
 const setId = (value) => {
     return { type: SET_ID, id: value }
 }
 
 const cleanEmpresas = () => {
-    return { type: CLEAN_EMPRESAS}
+    return { type: CLEAN_EMPRESAS }
 }
 
-
-
-
 const updateEmpresa = (value, index) => {
-    
+
     return {
         type: UPDATE_EMPRESA,
-         empresa: {
-            _id:value._id,
+        empresa: {
+            _id: value._id,
             name: value.name,
             email: value.email,
             street: value.street,
@@ -72,14 +59,14 @@ const updateEmpresa = (value, index) => {
             tel: value.tel,
             category: value.category
         },
-        index:index
+        index: index
     }
 }
 
 const addEmpresa = (value) => {
     return {
         type: ADD_EMPRESA, empresa: {
-            _id:value._id,
+            _id: value._id,
             name: value.name,
             email: value.email,
             street: value.street,
@@ -87,16 +74,18 @@ const addEmpresa = (value) => {
             city: value.city,
             uf: value.uf,
             tel: value.tel,
-            category: value.category
+            category: value.category,
+            img: value.img,
+            hashtags:value.hashtags
         }
     }
 }
 
 const setLastEmpresa = (value) => {
     return {
-        type: SET_LAST_EMPRESA, 
+        type: SET_LAST_EMPRESA,
         empresa: {
-            id_:value._id,
+            id_: value._id,
             name: value.name,
             email: value.email,
             street: value.street,
@@ -109,38 +98,24 @@ const setLastEmpresa = (value) => {
     }
 }
 
-const setAddData = (value) => {
+const setData = (value, reset=false) => {
     return {
-        type: SET_ADD_DATA, add_data: {
-            _id:value._id,
-            name: value.name,
-            email: value.email,
-            street: value.street,
-            place: value.place,
-            city: value.city,
-            uf: value.uf,
-            tel: value.tel,
-            category: value.category
+        type: SET_DATA, data: {
+            _id: !reset ? value._id : "",
+            name: !reset ? value.name : "",
+            email: !reset ? value.email : "",
+            street: !reset ? value.street : "",
+            place: !reset ? value.place : "",
+            city: !reset ? value.city : "",
+            uf: !reset ? value.uf : "",
+            tel: !reset ? value.tel : "",
+            category: !reset ? value.category : "",
+            hashtags: !reset ? value.hashtags : "",
         }
     }
 }
 
-const setUpdateData = (value) => {
-    
-    return {
-        type: SET_UPDATE_DATA, update_data: {
-            _id:value._id,
-            name: value.name,
-            email: value.email,
-            street: value.street,
-            place: value.place,
-            city: value.city,
-            uf: value.uf,
-            tel: value.tel,
-            category: value.category
-        }
-    }
-}
+
 
 const removeEmpresa = (value) => {
     return {
@@ -150,7 +125,16 @@ const removeEmpresa = (value) => {
 
 const cleanCredentials = () => {
     return {
-        type:CLEAN_CREDENTIALS
+        type: CLEAN_CREDENTIALS
+    }
+}
+
+const openModal = (value) => {
+    return {
+        type: OPEN_MODAL,
+        modal: value.modal,
+        modalType: value.modalType,
+        data: value.data
     }
 }
 
@@ -159,13 +143,11 @@ export { setPassword };
 export { setLoginLabel };
 export { openDrawer };
 export { isInsideDrawer };
-export { setAdd };
-export { setUpdate };
 export { setId };
 export { addEmpresa };
 export { removeEmpresa };
-export { setAddData };
-export { setUpdateData  }
+export { setData };
+export { openModal };
 export { setLastEmpresa };
 export { updateEmpresa };
 export { cleanEmpresas };

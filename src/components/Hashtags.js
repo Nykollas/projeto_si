@@ -3,21 +3,20 @@ import React, { Component } from 'react';
 
 
 class Hashtags extends Component {
+    constructor(props) {
+        super(props);
+    }
     render = () => {
-
-        const data = [
-            'hashtag',
-            'hashtag',
-            'hashtag',
-            'hashtag',
-        ]
-
+        const { hashtags } = this.props;
+        
         return (<div className={'hashtags-container'}>
-            {data.map((value) => {
+            {hashtags ? hashtags.map((value) => {
+                console.log(value);
                 return (<div className={'hashtag'}>
-                    <p className={'hashtag-text'}>{value}</p>
+                    <p className={'hashtag-text'}>{value.name}</p>
                 </div>);
-            })}
+            }):<></>}
+            
         </div>);
     }
 }
