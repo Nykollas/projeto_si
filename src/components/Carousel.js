@@ -25,6 +25,7 @@ class Carousel extends Component {
 
     onMouseMove = (event) => {
         const {holding }  = this.state;
+        
         const left  = this.carouselRef.scrollLeft
 
         if(holding ){
@@ -38,12 +39,8 @@ class Carousel extends Component {
 
 
     render = () => {
-        const data = [
-            "https://www.w3schools.com/w3css/img_lights.jpg",
-            "https://www.w3schools.com/w3css/img_lights.jpg",
-            "https://www.w3schools.com/w3css/img_lights.jpg",
-            "https://www.w3schools.com/w3css/img_lights.jpg",
-        ]
+        const { data } = this.props;
+        console.log(data);
         return (
             <div onDragStart={this.onDragStart}
                  onMouseUp = {this.onMouseUp}
@@ -52,7 +49,7 @@ class Carousel extends Component {
                  ref = {comp => this.carouselRef = comp}className={"carousel-container"}>
                 {data.map((value) => {
                     return <div className={"carousel-image-container"}>
-                        <img alt={"carousel"} className={"carousel-image"} src={value}></img>
+                        <img alt={"carousel"} className={"carousel-image"} src={value.img}></img>
                     </div>
                 })}
             </div>

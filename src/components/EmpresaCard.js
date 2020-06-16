@@ -14,7 +14,6 @@ class EmpresaCard extends Component {
 
     onClick = () => {
         const { data } = this.props;
-        
         const { openModal } = this.props;
         document.getElementsByTagName('body')[0].className = "scroll-stopped";
         openModal({modal:true, modalType:2, data:data});
@@ -22,16 +21,13 @@ class EmpresaCard extends Component {
 
     show = () => {
         const { data } = this.props;
-        
         const { openModal } = this.props;
         document.getElementsByTagName('body')[0].className = "scroll-stopped";
-        openModal({ modal:true, modalType:3, data:data });
+        openModal({ modal:true, modalType:1, data:data });
     }
 
     render = () => {
         const { data } = this.props;
-        console.log(data);
-        
         return (
             <div className={'empresa-card-container'}>
                 <div className={'empresa-col'}>
